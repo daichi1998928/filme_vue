@@ -1,0 +1,2 @@
+class ProductReview < ApplicationRecord
+end

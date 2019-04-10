@@ -1,0 +1,2 @@
+class HistoryItem < ApplicationRecord
+end
