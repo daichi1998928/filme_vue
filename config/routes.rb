@@ -2,17 +2,30 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :user do
-    resources :users,:only => [:edit,:update,:show]
+
     resources :histories, :only => [:create,:index,:new]
     resources :cart_items, :only => [:show,:create,:destroy]
-    resource :good_reviews, :only =>[:create]
+    resources :good_reviews, :only =>[:create]
     resources :products, :only => [:index,:show] do
       resource :favorites, :only => [:create,:index,:destroy]
     end
   end
 
   namespace :admin do
-  
+    resources :products,:except => [:show]
+    resources :lp_images,:only => [:edit,:update]
+    resources :movies do
+      resource :movie_reviews,:only => [:create] 
+    end
+    resources :users, :except =>[:show,:create]
+  end
+
+  scope module: :admin do
+    resources :admin,:except => [:show,:update]
+  end
+
+  scope module: :user do
+    resources :users,:only => [:edit,:update,:show]
   end
 
   #命名パスは勝手に付けた
