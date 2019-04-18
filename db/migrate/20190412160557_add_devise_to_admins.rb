@@ -5,7 +5,7 @@ class AddDeviseToAdmins < ActiveRecord::Migration[5.2]
     change_table :admins do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
-      t.string :password, null: false, default: ""
+      t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
       t.string   :reset_password_token
@@ -35,6 +35,7 @@ class AddDeviseToAdmins < ActiveRecord::Migration[5.2]
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false
+      t.string :name
     end
 
     add_index :admins, :email,                unique: true
