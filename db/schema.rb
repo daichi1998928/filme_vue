@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_29_080005) do
+ActiveRecord::Schema.define(version: 2019_04_29_080705) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -58,6 +58,12 @@ ActiveRecord::Schema.define(version: 2019_04_29_080005) do
   create_table "history_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "product_status", default: 1, null: false
+    t.integer "product_id", null: false
+    t.integer "product_price", null: false
+    t.integer "user_id", null: false
+    t.integer "history_id", null: false
+    t.integer "quantity"
   end
 
   create_table "lp_images", force: :cascade do |t|
