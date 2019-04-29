@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_134305) do
+ActiveRecord::Schema.define(version: 2019_04_29_032419) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -88,6 +88,15 @@ ActiveRecord::Schema.define(version: 2019_04_16_134305) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name", null: false
+    t.string "phonetic_name", null: false
+    t.string "postal_code", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "adress", null: false
+    t.string "phone_number", null: false
+    t.string "image_id", default: "google_profile.jpeg"
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
