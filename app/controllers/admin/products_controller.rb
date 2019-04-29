@@ -3,6 +3,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
+    
   end
 
   def new
