@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_29_032419) do
+ActiveRecord::Schema.define(version: 2019_04_29_051746) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -73,11 +73,22 @@ ActiveRecord::Schema.define(version: 2019_04_29_032419) do
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_id", null: false
+    t.string "product_title", null: false
+    t.integer "price", null: false
+    t.string "label_name", null: false
+    t.integer "stock", null: false
+    t.index ["product_title"], name: "index_products_on_product_title"
   end
 
   create_table "tracks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "product_id", null: false
+    t.string "track_name", null: false
+    t.string "artist_name", null: false
+    t.integer "disk_num", default: 1, null: false
+    t.integer "track_order", default: 1, null: false
   end
 
   create_table "users", force: :cascade do |t|
