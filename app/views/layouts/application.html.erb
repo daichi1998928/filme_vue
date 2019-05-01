@@ -11,6 +11,7 @@
 
   <body>
     <div class="container"> 
+    <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
      <%= yield %>
     </div>
   </body>
