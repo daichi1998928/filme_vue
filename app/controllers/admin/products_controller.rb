@@ -4,9 +4,7 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @new_cd = Product.new(products_params)
-
     @new_cd.save!
-    binding.pry
   end
 
   def new
