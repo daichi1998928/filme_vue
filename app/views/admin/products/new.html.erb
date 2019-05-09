@@ -1,2 +1,40 @@
-<h1>Admin::Products#new</h1>
-<p>Find me in app/views/admin/products/new.html.erb</p>
+<h1>CD新規登録</h1>
+
+<%= form_for [:admin,@new_cd] do |f| %>
+    <div class="field">
+      <%= f.label :product_title %>
+    <br/>
+      <%= f.text_field :product_title %>
+    </div>
+    <div class="field">
+      <%= f.label :label_name %>
+    <br/>
+      <%= f.text_field :label_name %>
+    </div>
+    <div class="field">
+      <%= f.label :product_image %>
+    <br/>
+      <%= f.attachment_field :image %>
+    </div>
+    <div class="field">
+      <%= f.label :price %>
+    <br/>
+      <%= f.number_field :price %>
+    </div>
+    <div class="field">
+      <%= f.label :stock %>
+    <br/>
+      <%= f.number_field :stock %>
+    </div>
+
+    <%= f.fields_for :tracks do |track| %>
+        <%= render 'track_fields', f: track  %>
+    <% end %>
+
+    <div class="links">
+      <%= link_to_add_association 'add track', f, :tracks %>
+    </div>
+
+　　<%= f.submit %>
+
+<% end %>
