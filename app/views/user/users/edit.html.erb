@@ -1,7 +1,49 @@
 <div class="row">
 　<div class="col-lg-3">
-    <%= link_to "プロフィール編集",edit_user_path(@user) %>
+    <ul class="sidebar">
+     画像表示
+     <li class="active bg-secondary"><%= link_to "プロフィール編集",edit_user_path(@user) %></li>
+     <li><%= link_to "購入履歴",user_histories_path %></li>
+     <li><%= link_to "お気に入り", favorites_path(@user) %></li>
+     <li><%= link_to "見たことある映画", user_path(@user) %></li>
+　  </ul>
   </div>
-  <div class="col-lg-9">ええええ</div>
+
+  <div class="col-lg-9">
+    <h2 class="text-center profil-title">公開プロフィール</h2>
+    <h4>基本情報</h4><br />
+
+    <%= form_with model:@user do |f|%>
+      <div class="field form-group">
+        <%= f.label :読みがな %><br />
+        <%= f.text_field :phonetic_name, autofocus: true,autocomplete: "phonetic_name",class:"form-control",placeholder:"ふりがな" %><br />
+        <%= f.label :名前 %><br />
+        <%= f.text_field :name,autocomplete:"name",class:"form-control",placeholder:"姓名" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autocomplete: "email",class:"form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :郵便番号 %><br />
+        <%= f.text_field :postal_code,autocomplete: "postal_code",class:"form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :住所 %><br />
+        <%= f.text_field :prefecture,autocomplete: "prefecture",class:"form-control",placeholder:"都道府県" %><br >
+        <%= f.text_field :city, autocomplete:"city",class:"form-control",placeholder:"市区町村" %><br >
+        <%= f.text_field :adress,autocomplete:"adress",class:"form-control",placeholder:"番地・建物" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :電話番号 %><br />
+        <%= f.text_field :phone_number,autocomplete: "phone_number",class:"form-control" %>
+      </div>
+
+    <% end %>
+  </div>
 
 </div>
