@@ -35,6 +35,14 @@
       <%= link_to_add_association 'add track', f, :tracks %>
     </div>
 
+    <%= f.fields_for :tracks do |track| %>
+        <%= render 'track2_fields', f: track  %>
+    <% end %>
+
+    <div class="links">
+      <%= link_to_add_association 'add track', f, :tracks,partial: 'track2_fields' %>
+    </div>
+
 　　<%= f.submit %>
 
 <% end %>
