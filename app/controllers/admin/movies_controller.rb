@@ -6,10 +6,10 @@ class Admin::MoviesController < ApplicationController
     @new_movie = Movie.new(moview_params)
 
     if @new_movie.save
-      flash[:notice] = "successful Created Movie!!"
+      flash[:movie] = "successful Created Movie!!"
     else
       render :new
-      
+
     end
   end
 
