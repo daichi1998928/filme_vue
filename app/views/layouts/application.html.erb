@@ -11,10 +11,11 @@
 
   <body>
     <div class="container">
-    <p><%= link_to "ログアウト (アプリケーション.htmlに書いている)", destroy_user_session_path, method: :delete %></p>
+    <p><%= link_to "ログアウト (アプリケーション.htmlに書いている)", destroy_user_session_path %></p>
     <% if flash[:notice] %>
      <%= flash[:notice] %>
     <% end %>
+
     <header>
       <h1>Filme</h1>
       <% if user_signed_in? %>
@@ -23,14 +24,19 @@
           <span><%= link_to "カートの中身" %></span>
           <span><%= link_to "ログアウト" %></span>
         </li>
-      <% elseif %>
+
+      <% elseif admin_signed_in? %>
           <span><%= link_to "ログイン" %></span>
           <span><%= link_to "新規登録" %></span>
+
       <% else %>
+
       <% end %>
+    </header>
     <%= yield %>
     <footer>
-      <small>©　CIRCUS</small>
+      <small>© CIRCUS</small>
+    </footer>
     </div>
   </body>
 </html>
