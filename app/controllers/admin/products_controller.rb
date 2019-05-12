@@ -13,7 +13,6 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @new_cd = Product.new
-
   end
 
   def edit
