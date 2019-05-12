@@ -1,2 +1,15 @@
-<h1>Admin::Products#edit</h1>
-<p>Find me in app/views/admin/products/edit.html.erb</p>
+<h1>CD編集</h1>
+
+<%= form_for(@cd) do |F| %>
+  
+  <%= f.attachment_field :image %>
+  
+  <h3>title</h3>
+  <%= f.text_field :product_title, autofocus: true %>
+
+  <h3>price</h3>
+  <%= f.text_field :price %>
+
+  <% f.submit"編集" %>
+
+<% end %>
