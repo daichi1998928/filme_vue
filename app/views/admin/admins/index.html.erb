@@ -2,5 +2,6 @@
 <% @admins.each do |admin| %>
   <%= admin.name %>
   <%= admin.email %>
+  aaa
   <%= link_to "削除", admin_path(admin), method: :delete %>
 <% end %>
