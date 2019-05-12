@@ -1,4 +1,9 @@
 <h1>CD新規登録</h1>
+<% if @new_cd.errors.any? %>
+  <% @new_cd.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+<% end %>
 
 <%= form_for [:admin,@new_cd] do |f| %>
     <div class="field">

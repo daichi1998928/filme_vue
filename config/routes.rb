@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
+
   devise_for :admins,controllers:{
     sessions: 'admins/sessions',
     registrations: 'admins/registrations'
   }
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   namespace :admin do
     resources :products,:except => [:show]
     resources :lp_images,:only => [:edit,:update]
@@ -28,8 +32,9 @@ Rails.application.routes.draw do
   end
 
   scope module: :admin do
-    resources :admin,:except => [:show,:update]
+    resources :admins,:except => [:show,:update]
   end
+
 
   scope module: :user do
     resources :favorites, :only => [:index]

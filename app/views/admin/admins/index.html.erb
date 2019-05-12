@@ -1,0 +1,6 @@
+<h1>管理者一覧</h1>
+<% @admins.each do |admin| %>
+  <%= admin.name %>
+  <%= admin.email %>
+  <%= link_to "削除", admin_path(admin), method: :delete %>
+<% end %>
