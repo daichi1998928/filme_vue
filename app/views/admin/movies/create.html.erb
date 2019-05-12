@@ -1,2 +1,5 @@
 <h1>Admin::Movies#create</h1>
 <p>Find me in app/views/admin/movies/create.html.erb</p>
+<% if flash[:notice] %>
+  <%= flash[:notice]%>
+<% end %>
