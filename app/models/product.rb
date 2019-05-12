@@ -6,9 +6,4 @@ class Product < ApplicationRecord
 
   attachment :image
 
-  validates :product_title, presence: true
-  validates :image, presence: true
-  validates :price, presence: true
-  validates :label_name, presence: true
-  validates :stock, presence: true
 end
