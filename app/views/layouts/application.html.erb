@@ -10,6 +10,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+    <p><%= link_to "ログアウト (アプリケーション.htmlに書いている)", destroy_user_session_path, method: :delete %></p>
+    <% if flash[:notice] %>
+     <%= flash[:notice] %>
+    <% end %>
+     <%= yield %>
+    </div>
   </body>
 </html>

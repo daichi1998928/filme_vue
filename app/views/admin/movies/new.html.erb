@@ -1,2 +1,35 @@
 <h1>Admin::Movies#new</h1>
 <p>Find me in app/views/admin/movies/new.html.erb</p>
+<% if @new_movie.errors.any? %>
+  <% @new_movie.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+<% end %>
+
+
+<%= form_for [:admin,@new_movie] do |f| %>
+    <div class="field">
+      <%= f.label :title %>
+    <br/>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :url %>
+    <br/>
+      <%= f.text_area :url %>
+    </div>
+    <div class="field">
+      <%= f.label :movie_image %>
+    <br/>
+      <%= f.attachment_field :image %>
+    </div>
+    <div class="field">
+      <%= f.label :detail %>
+    <br/>
+      <%= f.text_area :detail %>
+    </div>
+
+
+　　<%= f.submit %>
+
+<% end %>
