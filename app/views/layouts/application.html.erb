@@ -19,13 +19,13 @@
       <h1>Filme</h1>
       <% if user_signed_in? %>
         <li>
-          <span><%= link_to "マイページ", %></span>
-          <span><%= link_to "カートの中身", %></span>
-          <span><%= link_to "ログアウト", method: :delete %></span>
+          <span><%= link_to "マイページ" %></span>
+          <span><%= link_to "カートの中身" %></span>
+          <span><%= link_to "ログアウト" %></span>
         </li>
-      <% else if %>
-          <span><%= link_to "ログイン", %></span>
-          <span><%= link_to "新規登録", %></span>
+      <% elseif %>
+          <span><%= link_to "ログイン" %></span>
+          <span><%= link_to "新規登録" %></span>
       <% else %>
       <% end %>
     <%= yield %>
