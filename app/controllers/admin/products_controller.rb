@@ -9,10 +9,10 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @new_cd = Product.new
-
   end
 
   def edit
+    @cd = Product.find(params[:id])
   end
 
   def update
