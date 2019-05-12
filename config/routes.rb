@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users
+  devise_for :admins,controllers:{
+    sessions: 'admins/sessions',
+    registrations: 'admins/registrations'
+  }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :user do
 
@@ -8,7 +14,7 @@ Rails.application.routes.draw do
     resources :cart_items, :only => [:show,:create,:destroy]
     resources :good_reviews, :only =>[:create]
     resources :products, :only => [:index,:show] do
-      resource :favorites, :only => [:create,:index,:destroy]
+      resources :favorites, :only => [:create,:destroy]
     end
   end
 
@@ -16,7 +22,7 @@ Rails.application.routes.draw do
     resources :products,:except => [:show]
     resources :lp_images,:only => [:edit,:update]
     resources :movies do
-      resource :movie_reviews,:only => [:create] 
+      resource :movie_reviews,:only => [:create]
     end
     resources :users, :except =>[:show,:create]
   end
@@ -26,6 +32,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :user do
+    resources :favorites, :only => [:index]
     resources :users,:only => [:edit,:update,:show]
   end
 

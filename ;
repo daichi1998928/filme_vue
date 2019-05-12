@@ -1,0 +1,10 @@
+[finish]create new cd
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch feature/create_new_cd
+# Changes to be committed:
+#	new file:   app/views/admin/products/_track2_fields.html.erb
+#	modified:   app/views/admin/products/_track_fields.html.erb
+#	modified:   app/views/admin/products/new.html.erb
+#

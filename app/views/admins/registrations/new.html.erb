@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4">
+
+    <h2 class="sign_up_label">管理者新規登録</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <div class="a">
+          <%= f.label :name %><br />
+        </div>
+        <div class="b">
+            <%= f.text_field :name, autofocus: true, placeholder:"名前", class: "form_controll"%>
+        </div>
+
+      </div>
+
+
+      <div class="field">
+        <div class="a">
+          <%= f.label :email %><br />
+        </div>
+        <div class="b">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_controll"%>
+        </div>
+
+
+      </div>
+
+      <div class="field">
+        <div class="a">
+          <%= f.label :password %>
+        </div>
+        <div class="b">
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password",class: "form_controll" %>
+        </div>
+
+      </div>
+
+      <div class="field">
+        <div class="a">
+            <%= f.label :password_confirmation %><br />
+        </div>
+        <div class="a">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form_controll" %>
+        </div>
+
+
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+
+    <%= render "admins/shared/links" %>
+  </div>
+</div>

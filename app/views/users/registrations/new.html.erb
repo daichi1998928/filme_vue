@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4">
+    <h3>新規登録</h3>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      
+      <div class="field form-group">
+        <%= f.label :名前 %><br />
+        <%= f.text_field :phonetic_name, autofocus: true,autocomplete: "phonetic_name",class:"form-control",placeholder:"ふりがな" %><br />
+        <%= f.text_field :name,autocomplete:"name",class:"form-control",placeholder:"姓名" %>
+      </div>
+      
+      <div class="field form-group">
+        <%= f.label :電話番号 %><br />
+        <%= f.text_field :phone_number,autocomplete: "phone_number",class:"form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :郵便番号 %><br />
+        <%= f.text_field :postal_code,autocomplete: "postal_code",class:"form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :住所 %><br />
+        <%= f.text_field :prefecture,autocomplete: "prefecture",class:"form-control",placeholder:"都道府県" %><br >
+        <%= f.text_field :city, autocomplete:"city",class:"form-control",placeholder:"市区町村" %><br >
+        <%= f.text_field :adress,autocomplete:"adress",class:"form-control",placeholder:"番地・建物" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autocomplete: "email",class:"form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :パスワードの確認 %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "登録する",class:"btn btn-primary btn-block" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+</div>
