@@ -17,6 +17,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
+    @cd = Product.find(params[:id])
   end
 
   def update
