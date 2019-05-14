@@ -1,0 +1,7 @@
+<p>aaaaaaaaaaa</p>
+
+<p><%= @search_count %>件の検索結果が出ました。</p>
+<% @search_products.each do |product| %>
+  <%= product.product_title %>
+  <%= attachment_image_tag product, :image, :fill, 200, 200 %>
+<% end %>
