@@ -48,8 +48,8 @@ root to: 'root#top'
 
   #命名パスは勝手に付けた
 
-  get 'user/products/seach', to: 'user/products#search',as: 'search_products'
-  get 'user/thanks', to:'user/user#finish'
-  get 'user/check', to:'user/users#destroy_check'
+  # get 'user/products/seach', to: 'user/products#search',as: 'search_products'
+  # get 'user/thanks', to:'user/user#finish'
+  # get 'user/check', to:'user/users#destroy_check'
   root to: 'root#top'
 end
