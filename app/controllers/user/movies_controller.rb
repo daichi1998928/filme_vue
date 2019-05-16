@@ -9,4 +9,5 @@ private
     params.require(:movie).permit(:image, :title, :url, :detail)
   end
 
+
 end

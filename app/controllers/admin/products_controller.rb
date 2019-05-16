@@ -20,6 +20,9 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:id])
+    @product.update
+    redirect_to admin_movie_path(@product)
   end
 
   def destroy

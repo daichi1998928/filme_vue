@@ -1,9 +1,10 @@
 class Admin::MoviesController < ApplicationController
   def index
+    @movies = Movie.all
   end
 
   def create
-    @new_movie = Movie.new(moview_params)
+    @new_movie = Movie.new(movie_params)
 
     if @new_movie.save
       flash[:movie] = "successful Created Movie!!"
@@ -20,14 +21,21 @@ class Admin::MoviesController < ApplicationController
     @new_movie = Movie.new
   end
 
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
   def update
+    @movie = Movie.find(params[:id])
+    @movie.update
+    redirect_to admin_movies_path
   end
 
   def destroy
   end
 
   private
-  def moview_params
+  def movie_params
      params.require(:movie).permit(:image,:url,:detail,:title)
   end
 
