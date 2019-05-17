@@ -35,7 +35,7 @@ root to: 'root#top'
   end
 
   scope module: :admin do
-    resources :admin,:except => [:show,:update]
+    resources :admins,:except => [:show,:update]
   end
 
   scope module: :user do

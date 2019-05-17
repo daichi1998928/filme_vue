@@ -4,6 +4,11 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @new_cd = Product.new(products_params)
+    if @new_cd.save
+      flash[:cd] = "successful Created CD!!"
+    else
+      render :new
+    end
     @new_cd.save!
   end
 
@@ -13,6 +18,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
+    @cd = Product.find(params[:id])
   end
 
   def update
