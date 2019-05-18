@@ -21,7 +21,7 @@
       <% if user_signed_in? %>
         <li>
           <span><%= link_to "マイページ",user_products_path %></span>
-          <span><%= link_to "カートの中身",user_cart_item_path(@user.cart_item)%></span>
+          <span><%= link_to "カートの中身","#" %></span>
           <span><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></span>
         </li>
 
