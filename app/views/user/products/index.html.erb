@@ -11,10 +11,12 @@
   </div>
 
   <div class="col-lg-8 col-lg-offset-1">
-   <% @products.each do |p|%>
+   <% @products.each do |product|%>
      <div class="product-block">
-       <%= attachment_image_tag p, :image,:size => "200x200" %>
-       <div><%= p.product_title %></div>
+       <%= link_to(user_product_path(product.id)) do %>
+        <%= attachment_image_tag product, :image,:size => "200x200" %>
+        <div><%= product.product_title %></div>
+       <% end %>
      </div>
    <% end %>
   </div>
