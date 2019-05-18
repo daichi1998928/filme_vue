@@ -6,8 +6,6 @@ class Product < ApplicationRecord
 
   attachment :image
 
-<<<<<<< HEAD
-=======
   validates :product_title, presence: true
   validates :image, presence: true
   validates :price, presence: true
@@ -25,5 +23,4 @@ class Product < ApplicationRecord
 
 
 
->>>>>>> 22960e94a0754978bac051d3ccf02674a4101311
 end
