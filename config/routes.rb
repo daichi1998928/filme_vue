@@ -10,7 +10,6 @@ root to: 'root#top'
     sessions: 'admins/sessions',
     registrations: 'admins/registrations'
   }
-
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -26,7 +25,6 @@ root to: 'root#top'
     end
   end
 
-
   namespace :admin do
     resources :products,:except => [:show]
     resources :lp_images,:only => [:edit,:update]
@@ -39,7 +37,6 @@ root to: 'root#top'
   scope module: :admin do
     resources :admins,:except => [:show,:update]
   end
-
 
   scope module: :user do
     resources :favorites, :only => [:index]

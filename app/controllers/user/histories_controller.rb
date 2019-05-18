@@ -1,6 +1,4 @@
 class User::HistoriesController < ApplicationController
-
-  def finish
-  end
-
+    def finish
+    end
 end
