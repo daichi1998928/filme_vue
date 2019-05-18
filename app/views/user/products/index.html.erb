@@ -2,3 +2,20 @@
         <%= f.text_field :product_title, placeholder: "CDのタイトルを入力してね！" %>
         <%= submit_tag 'Search' %>
 <% end %>
+
+<div class="row">
+
+  <div class="col-lg-3 ranking">
+    <p class="title">ランキング</p>
+    <div>1位</div>
+  </div>
+
+  <div class="col-lg-8 col-lg-offset-1">
+   <% @products.each do |p|%>
+     <div class="product-block">
+       <%= attachment_image_tag p, :image,:size => "200x200" %>
+       <div><%= p.product_title %></div>
+     </div>
+   <% end %>
+  </div>
+</div>
