@@ -1,1 +1,14 @@
 詳細ページだよう
+<div class="clearfix row">
+    <div class="product-img col-lg-4 col-lg-offset-1">
+     <%= attachment_image_tag @product, :image,:size => "300x300" %>
+    </div>
+
+    <div class="detail-block">
+        <h1 class="product-title">aa</h1>
+        <div class="">星</div> | <span>残り<%= @product.stock %></span>
+        <div>¥ <%= @product.price %></div> | <div><%= @product.label_name %></div>
+        <%= link_to "カートに入れる","#",class:"btn btn-warning" %>
+        <%= link_to "お気に入り","#",class:"btn btn-default"%>
+    </div>
+</div>
