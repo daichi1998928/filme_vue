@@ -1,6 +1,5 @@
 class User::MoviesController < ApplicationController
-<<<<<<< HEAD
-=======
+
 
   def edit
   	@movie = Movie.find(params[:id])
@@ -12,5 +11,4 @@ private
   end
 
 
->>>>>>> 22960e94a0754978bac051d3ccf02674a4101311
 end

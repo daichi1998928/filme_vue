@@ -1,9 +1,8 @@
 class Product < ApplicationRecord
 
-
   has_many :tracks
   accepts_nested_attributes_for :tracks, reject_if: :all_blank, allow_destroy: true
-
+  has_many :product_reviews
   attachment :image
 
   validates :product_title, presence: true
@@ -20,6 +19,9 @@ class Product < ApplicationRecord
       end
   end
 
+  def product_reviewed_by(user)
+    product_reviews.where(user_id: user.id).exists?
+  end
 
 
 
