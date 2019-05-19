@@ -5,9 +5,9 @@ class User::CartItemsController < ApplicationController
   	@cart_item = CartItem.find(params[:id])
   end
 
-private
-  def cart_items_params
-    params.require(:cart_item).permit(:quantity)
-  end
+  private
+	def cart_items_params
+	   params.require(:cart_item).permit(:quantity)
+	end
 
 end
