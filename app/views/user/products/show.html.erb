@@ -1,8 +1,11 @@
+　<% unless @product.product_reviewed_by?(current_user) %>
+    <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
 
-<%= form_for [@product,@product_review],url: user_product_product_reviews_path(@product) do |f| %>
+        <%= f.label :rate %>
+        <%= f.select :rate, [1,2,3,4,5 ],  :prompt => "選択してください" %>
+        <%= f.submit %>
 
-    <%= f.label :rate %>
-    <%= f.select :rate, [1,2,3,4,5 ],  :prompt => "選択してください" %>
-    <%= f.submit %>
+    <% end %>
+  <% end %>
 
-<% end %>
+<p>平均<%= @product_review_average %>の評価です</p>

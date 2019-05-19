@@ -15,6 +15,9 @@ class User::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @product_review = ProductReview.new
+    @new_product_review = ProductReview.new
+    @product_review_average = @product.product_reviews
+    binding.pry
+    group(:product_id).average(:rate).values
   end
 end
