@@ -1,7 +1,11 @@
 <h1>管理者一覧</h1>
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
 <% @admins.each do |admin| %>
   <%= admin.name %>
   <%= admin.email %>
-  aaa
   <%= link_to "削除", admin_path(admin), method: :delete %>
 <% end %>
