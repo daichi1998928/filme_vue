@@ -7,7 +7,7 @@ class User::ProductsController < ApplicationController
 
   def index
     @products=Product.all
-    
+
   end
 
   def show
@@ -15,5 +15,6 @@ class User::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @product_review = ProductReview.new
   end
 end
