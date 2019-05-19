@@ -9,10 +9,12 @@ class Admin::ProductsController < ApplicationController
     else
       render :new
     end
+    @new_cd.save!
   end
 
   def new
     @new_cd = Product.new
+
   end
 
   def edit
