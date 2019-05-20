@@ -16,8 +16,10 @@ class User::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @new_product_review = ProductReview.new
-    @product_review_average = @product.product_reviews.average(:rate).ceil.to_s
-    @product_review_average_file = 'star' + @product_review_average + '.png'
+    if @product.product_reviews.exists?
+      @product_review_average = @product.product_reviews.average(:rate).ceil.to_s
+      @product_review_average_file = 'star' + @product_review_average + '.png'
+    end
 
   end
 end
