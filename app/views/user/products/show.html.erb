@@ -47,9 +47,10 @@
     <% if @related_product.exists? %>
       <h3 class="track-title">関連商品</h3>
       <div class="related-product">
-       <%= binding.pry %>
-        <div><%= attachment_image_tag @related_product, :image ,class:"related-img"%></div><br>
-       <p><% @related_product.product_title %></p>
+       <% @related_product.each do |related_product| %>
+          <div><%= attachment_image_tag related_product, :image,:size => "100x100",class:"related-img"%></div><br>
+          <p><% related_product.product_title %></p>
+       <% end %>
       </div>
     <% end %>
 </div>
