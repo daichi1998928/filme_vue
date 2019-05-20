@@ -21,6 +21,9 @@ class User::UsersController < ApplicationController
       @user_id = User.find(params[:id])
     end
 
+    def finish
+    end
+
     private
 
 	def users_params
