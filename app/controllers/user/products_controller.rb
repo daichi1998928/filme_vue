@@ -17,4 +17,8 @@ class User::ProductsController < ApplicationController
     @related_product=Product.where("product_title LIKE ?","%#{@product.product_title}%")
                       .where.not(product_title: "#{@product.product_title}")
   end
+
+  def show
+    @product = Product.find(params[:id])
+  end
 end

@@ -19,8 +19,8 @@ root to: 'root#top'
 
     resources :histories, :only => [:create,:index,:new]
     resources :cart_items, :only => [:show,:create,:destroy]
-    resources :good_reviews, :only =>[:create]
     resources :products, :only => [:index,:show] do
+      resources :product_reviews, :only =>[:create]
       resources :favorites, :only => [:create,:destroy]
     end
   end
