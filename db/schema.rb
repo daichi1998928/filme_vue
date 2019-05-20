@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_01_141117) do
+ActiveRecord::Schema.define(version: 2019_05_20_154956) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -133,8 +133,8 @@ ActiveRecord::Schema.define(version: 2019_05_01_141117) do
     t.string "city", null: false
     t.string "adress", null: false
     t.string "phone_number", null: false
-    t.string "image_id", default: "google_profile.jpeg"
     t.datetime "deleted_at"
+    t.string "image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
