@@ -19,7 +19,7 @@ class Product < ApplicationRecord
       end
   end
 
-  def product_reviewed_by(user)
+  def product_reviewed_by?(user)
     product_reviews.where(user_id: user.id).exists?
   end
 
