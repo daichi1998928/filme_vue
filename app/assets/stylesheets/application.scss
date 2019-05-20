@@ -14,12 +14,11 @@
  *= require_self
  */
  @import "bootstrap-sprockets";
- @import "bootstrap";   
+ @import "bootstrap";
 
 
- .clearfix::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-  
+.clearfix::after {
+   content: "";
+   display: block;
+   clear: both;
+ }
