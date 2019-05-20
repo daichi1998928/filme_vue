@@ -1,14 +1,55 @@
-詳細ページだよう
-<div class="clearfix row">
-    <div class="product-img col-lg-4 col-lg-offset-1">
-     <%= attachment_image_tag @product, :image,:size => "300x300" %>
+
+<div class="clearfix">
+    <div class="row row-eq-height ">
+        <div class="product-img col-lg-4 col-lg-offset-1">
+        <%= attachment_image_tag @product, :image,:size => "300x300" %>
+        </div>
+
+        <div class="detail-block col-lg-7">
+            <h1 class="product-title"><%= @product.product_title %></h1>
+            <div class="valu">星 |</div> <div> 残り<%= @product.stock %></div><br>
+            <div class="price">¥ <%= @product.price %></div> <br>
+            <div>ここで評価してねええええ</div><br>
+            <div><%= @product.label_name %></div><br>
+            <%= link_to "カートに入れる","#",class:"btn btn-warning" %>
+            <%= link_to "お気に入り","#",class:"btn btn-default"%>
+        </div>
     </div>
 
-    <div class="detail-block">
-        <h1 class="product-title">aa</h1>
-        <div class="">星</div> | <span>残り<%= @product.stock %></span>
-        <div>¥ <%= @product.price %></div> | <div><%= @product.label_name %></div>
-        <%= link_to "カートに入れる","#",class:"btn btn-warning" %>
-        <%= link_to "お気に入り","#",class:"btn btn-default"%>
-    </div>
+    <table width="100%" class="tracks">
+      <tr class="track-title">
+        <th>No.</th>
+        <th>タイトル</th>
+        <th>アーティスト</th>
+      </tr>
+
+      <% @traks1.each do |trak| %>
+        <tr>
+          <td><%= trak.track_order %></td>
+          <td><%= trak.track_name %></td>
+          <td><%= trak.artist_name %></td>
+        </tr>
+      <% end %>
+    </table>
+     
+    <div class="text-center disk2">Disk2</div>
+
+    <table width="100%" class="tracks">
+      <% @traks2.each do |trak| %>
+        <tr>
+          <td><%= trak.track_order %></td>
+          <td><%= trak.track_name %></td>
+          <td><%= trak.artist_name %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <% if @related_product.exists? %>
+      <h3 class="track-title">関連商品</h3>
+      <div class="related-product">
+       <%= binding.pry %>
+        <div><%= attachment_image_tag @related_product, :image ,class:"related-img"%></div><br>
+       <p><% @related_product.product_title %></p>
+      </div>
+    <% end %>
 </div>

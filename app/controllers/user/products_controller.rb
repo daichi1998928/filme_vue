@@ -12,5 +12,9 @@ class User::ProductsController < ApplicationController
 
   def show
     @product=Product.find(params[:id])
+    @traks1=Track.where(product_id:@product.id).where(disk_num:1).order(:track_order)
+    @traks2=Track.where(product_id:@product.id).where(disk_num:2).order(:track_order)
+    @related_product=Product.where("product_title LIKE ?","%#{@product.product_title}%")
+                    
   end
 end
