@@ -19,3 +19,28 @@
    float:left;
    margin-right:30px;
 }
+.detail-block,.product-img{
+    div{
+        float:left;
+    }
+    .btn{
+        margin-top:10px;
+    }
+}
+table{
+    margin-top:20px;
+}
+.track-title{
+    border-bottom:3px solid #CB7762;
+    font-size: 20px;
+}
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.related-product{
+    display:inline-block;
+    width:30%;
+    margin-right:5%;
+}
