@@ -53,8 +53,6 @@
     <% end %>
 </div>
 
-
-
 <% unless @product.product_reviewed_by?(current_user) %>
     <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
 
@@ -69,4 +67,3 @@
   <p>平均<%= @product_review_average %>の評価です</p>
   <%= image_tag @product_review_average_file, :size => '60x20' %>
 <% end %>
-
