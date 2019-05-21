@@ -1,2 +1,29 @@
-<h1>Admin::Movies#show</h1>
-<p>Find me in app/views/admin/movies/show.html.erb</p>
+<div class="clearfix">
+  <div class="row row-eq-height">
+    <div class="movie-img">
+      <%= attachment_image_tag @movie, :image,:size => "300x300" %>
+    </div>
+    <div class="movie-information">
+      <h1><%= @movie.title %></h1>
+      <p class="average_movie_review">映画の評価の平均入れてね〜〜</p>
+        <div class="row-eq-height">
+          <div class="movie_relation_product">
+            <p><%= link_to "#{@movie.title}のサウンドトラックを見る!",user_product_path(@movie_relation_product.id) %>  
+          </div>
+          <div class="movie_review">
+            映画の評価をする（見た）
+          </div>
+        </div>
+        <p>公式URL: <%= link_to @movie.title, @movie.url %></p>
+
+    </div>
+
+  </div>
+  <div class="movie-detail-block">
+    <p　class="movie-detail">詳細</p>
+    <p class="movie-detail-content">
+      <%= @movie.detail %>
+    </p>
+  </div>
+
+</div>
