@@ -1,5 +1,8 @@
    <ul class="sidebar">
-     画像表示
+    <div class="profile-icon"><%= attachment_image_tag user,:image,format:'jpeg',fallback:"no_image.png" %></div>
+    <% if edit %>
+      <%= f.attachment_field :image %>
+    <% end %>
      <li class="active bg-secondary"><%= link_to "プロフィール編集",edit_user_path(user) %></li>
      <li><%= link_to "購入履歴",user_histories_path %></li>
      <li><%= link_to "お気に入り", favorites_path(user) %></li>
