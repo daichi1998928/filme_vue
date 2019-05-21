@@ -1,7 +1,12 @@
-<p>aaaaaaaaaaa</p>
 
 <p><%= @search_count %>件の検索結果が出ました。</p>
 <% @search_products.each do |product| %>
   <%= product.product_title %>
-  <%= attachment_image_tag product, :image, :fill, 200, 200 %>
+  <p><%= attachment_image_tag product, :image, :fill, 200, 200 %></p>
+  <% if product.product_reviews.exists? %>
+    <% product_review_average = product.product_reviews.average(:rate).ceil.to_s %>
+    <% product_review_average_file = 'star' + product_review_average + '.png' %>
+    平均<%= product_review_average %>の評価です
+    <%= image_tag product_review_average_file, :size => '60x20' %>
+  <% end %>
 <% end %>
