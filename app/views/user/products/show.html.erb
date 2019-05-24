@@ -5,9 +5,24 @@
         </div>
         <div class="detail-block col-lg-7">
             <h1 class="product-title"><%= @product.product_title %></h1>
-            <div class="valu">星 |</div> <div> 残り<%= @product.stock %></div><br>
-            <div class="price">¥ <%= @product.price %></div> <br>
-            <div>ここで評価してねええええ</div><br>
+            
+            <% if @product.product_reviews.exists? %>
+              <%= image_tag @product_review_average_file, :size => '60x20' %> 
+            <% end %>
+
+            <span class="review-count"> / <%= @product.product_reviews.count %> </span><br>
+              <div> 残り<%= @product.stock %></div><br>
+            <div class="price">¥ <%= @product.price %> /</div>
+
+            
+            <% unless @product.product_reviewed_by?(current_user) %>
+              <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
+                <%= f.label :rate %>
+                <%= f.select :rate, [1,2,3,4,5 ],  :prompt => "選択してください" %>
+                <%= f.submit %>
+              <% end %>
+            <% end %>
+           
             <div><%= @product.label_name %></div><br>
             <%= link_to "カートに入れる","#",class:"btn btn-warning " %>
             <%= link_to "お気に入り","#",class:"btn btn-default"%>
@@ -29,8 +44,10 @@
         </tr>
       <% end %>
     </table>
-
-    <div class="text-center disk2">Disk2</div>
+    
+    <% if @traks2.exists? %>
+     <div class="text-center disk2">Disk2</div>
+    <% end %>
 
     <table width="100%" class="tracks">
       <% @traks2.each do |trak| %>
@@ -52,18 +69,3 @@
       </div>
     <% end %>
 </div>
-
-<% unless @product.product_reviewed_by?(current_user) %>
-    <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
-
-        <%= f.label :rate %>
-        <%= f.select :rate, [1,2,3,4,5 ],  :prompt => "選択してください" %>
-        <%= f.submit %>
-
-    <% end %>
-  <% end %>
-
-<% if @product.product_reviews.exists? %>
-  <p>平均<%= @product_review_average %>の評価です</p>
-  <%= image_tag @product_review_average_file, :size => '60x20' %>
-<% end %>
