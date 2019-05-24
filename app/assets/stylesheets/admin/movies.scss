@@ -1,3 +1,22 @@
 // Place all the styles related to the Admin::Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.movie-information{
+  margin-left: 30px;
+}
+.movie_relation_product button{
+  margin:1px;
+}
+.movie-url a{
+  margin-top: 1px;
+}
+.movie-detail{
+  font-size: 50px;
+}
+.detail-content{
+ border-top: solid;
+ border-bottom: solid;
+ padding: 10px 0;
+}

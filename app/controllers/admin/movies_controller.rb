@@ -17,7 +17,7 @@ class Admin::MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @movie_relation_product = Product.where("product_title LIKE ?", "%#{@movie.title}%").first
-    binding.pry
+    
 
   end
 
