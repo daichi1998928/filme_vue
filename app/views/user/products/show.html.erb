@@ -24,8 +24,8 @@
             <% end %>
            
             <div><%= @product.label_name %></div><br>
-            <%= link_to "カートに入れる","#",class:"btn btn-warning " %>
-            <%= link_to "お気に入り","#",class:"btn btn-default"%>
+            <%= link_to "カートに入れる",user_cart_items_path ,method: :post ,product_id: @product.id,class:"btn btn-warning" %>
+            <%= link_to "お気に入り", user_product_favorites_path, method: :post, class:"btn btn-default"%>
         </div>
     </div>
 
@@ -44,7 +44,7 @@
         </tr>
       <% end %>
     </table>
-    
+
     <% if @traks2.exists? %>
      <div class="text-center disk2">Disk2</div>
     <% end %>
