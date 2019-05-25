@@ -18,13 +18,18 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @cd = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def update
     @product = Product.find(params[:id])
-    @product.update
-    redirect_to admin_movie_path(@product)
+    if @product.update(products_params)
+      flash[:notice_m] = "編集に成功しました"
+    redirect_to admin_products_path
+
+    else
+      render "edit"
+    end
   end
 
   def destroy
