@@ -48,5 +48,5 @@ root to: 'root#top'
   # get 'user/products/seach', to: 'user/products#search',as: 'search_products'
   # get 'user/thanks', to:'user/user#finish'
   # get 'user/check', to:'user/users#destroy_check'
-  root to: 'root#top'
+  # root to: 'root#top'
 end
