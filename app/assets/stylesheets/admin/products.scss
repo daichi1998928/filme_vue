@@ -1,3 +1,36 @@
 // Place all the styles related to the Admin::Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product_information{
+  width: 1000px;
+}
+.product_information_block{
+  display: inline-block;
+  width:300px;
+  height: 100px;
+
+}
+.product_information_block1{
+  display: inline-block;
+  width:300px;
+  height: 70px;
+}
+.long_form{
+  width: 365px;
+  margin:10px 0 10px 10px;
+}
+.disk1-block{
+  width: 460px;
+  margin-left: 300px;
+  border-top: solid;
+}
+.disk2-block{
+  margin-left: 300px;
+}
+.new_product{
+  .btn{
+    margin-top:10px;
+  }
+  display: inline;
+}

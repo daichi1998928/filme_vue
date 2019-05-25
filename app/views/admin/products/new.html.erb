@@ -1,55 +1,73 @@
-<h1>CD新規登録</h1>
+<div class="row">
+  <h1>CD新規登録</h1>
 
-<% if @new_cd.errors.any? %>
-  <% @new_cd.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-<% end %>
-
-
-<%= form_for [:admin,@new_cd] do |f| %>
-    <div class="field">
-      <%= f.label :product_title %>
-    <br/>
-      <%= f.text_field :product_title %>
-    </div>
-    <div class="field">
-      <%= f.label :label_name %>
-    <br/>
-      <%= f.text_field :label_name %>
-    </div>
-    <div class="field">
-      <%= f.label :product_image %>
-    <br/>
-      <%= f.attachment_field :image %>
-    </div>
-    <div class="field">
-      <%= f.label :price %>
-    <br/>
-      <%= f.number_field :price %>
-    </div>
-    <div class="field">
-      <%= f.label :stock %>
-    <br/>
-      <%= f.number_field :stock %>
-    </div>
-
-    <%= f.fields_for :tracks do |track| %>
-        <%= render 'track_fields', f: track  %>
+    <% if @new_cd.errors.any? %>
+      <% @new_cd.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     <% end %>
 
-    <div class="links">
-      <%= link_to_add_association 'add track', f, :tracks %>
-    </div>
 
-    <%= f.fields_for :tracks do |track| %>
-        <%= render 'track2_fields', f: track  %>
+    <%= form_for [:admin,@new_cd] do |f| %>
+         <div class="clearfix">
+               <div class="product_information_block1">
+                 <div class="field">
+                   <%= f.label :product_image %>
+                 <br/>
+                   <%= f.attachment_field :image %>
+                 </div>
+               </div>
+               <div class="product_information_block">
+                  <div class="field">
+                    <%= f.label :product_title %>
+                   <br/>
+                    <%= f.text_field :product_title,style:"width: 250px;" %>
+                  </div>
+                  <div class="field">
+                    <%= f.label :label_name %>
+                   <br/>
+                    <%= f.text_field :label_name,style:"width: 250px;"%>
+                  </div>
+               </div>
+               <div class="product_information_block">
+                  <div class="field">
+                    <%= f.label :stock %>
+                   <br/>
+                    <%= f.number_field :stock %>
+                  </div>
+
+                  <div class="field">
+                    <%= f.label :price %>
+                   <br/>
+                    <%= f.number_field :price %>
+                  </div>
+               </div>
+          </div>
+          <div class="new_product">
+            <%= f.submit "商品登録",class: "btn btn-primary" %>
+          </div>
+          <div class="disk1-block">
+            <p style="font-size: 20px;">Disk1</p>
+            <%= f.fields_for :tracks do |track| %>
+                <%= render 'track_fields', f: track  %>
+
+            <% end %>
+
+            <div class="links">
+              <%= link_to_add_association 'Disk1の曲を追加', f, :tracks %>
+            </div>
+          </div>
+          <div class="disk2-block">
+            <p style="font-size: 20px;">Disk2</p>
+            <%= f.fields_for :tracks do |track| %>
+                <%= render 'track2_fields', f: track  %>
+            <% end %>
+
+            <div class="links">
+              <%= link_to_add_association 'Disk2の曲を追加', f, :tracks,partial: 'track2_fields' %>
+            </div>
+          </div>
+
+
     <% end %>
-
-    <div class="links">
-      <%= link_to_add_association 'add track', f, :tracks,partial: 'track2_fields' %>
-    </div>
-
-  <%= f.submit %>
-
-<% end %>
+</div>
