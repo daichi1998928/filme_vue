@@ -1,2 +1,29 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<div class="row">
+  <table class="col-lg-8 col-lg-offset-4">
+       <h1 style="text-align:center;">CD一覧</h1>
+         <thead>
+           <tr>
+             <th ></th>
+             <th class="product_name">CD名</th>
+           </tr>
+         </thead>
+       <% @products.each do |product| %>
+        <div class="product">
+           <tr>
+             <td class="product_image">
+               <%= attachment_image_tag product, :image, :fill, 100, 100%>
+             </td>
+             <td class="product_title"><%= product.product_title %></td>
+             <td><%= link_to "編集",edit_admin_product_path(product),class: "btn btn-primary product_edit" %></td>
+             <td><%= link_to "削除", admin_product_path(product), method: :delete,class: "btn btn-primary product_delete" %></td>
+
+           </tr>
+         </div>
+
+
+       <% end %>
+     </table>
+     <div class="product_paginate col-lg-offset-4">
+       <%= paginate @products %>
+     </div>
+</div>
