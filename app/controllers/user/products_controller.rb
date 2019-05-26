@@ -10,6 +10,10 @@ class User::ProductsController < ApplicationController
 
   end
 
+  def create
+    @cart_item　= Cart
+  end
+
 
   def show
     @product = Product.find(params[:id])

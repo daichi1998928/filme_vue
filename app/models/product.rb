@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :label_name, presence: true
   validates :stock, presence: true
-
+   
   def self.search(search)
       if search
         Product.where('product_title LIKE ?', "#{search}%")

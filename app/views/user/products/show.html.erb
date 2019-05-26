@@ -24,8 +24,13 @@
             <% end %>
            
             <div><%= @product.label_name %></div><br>
-            <%= link_to "カートに入れる",user_cart_items_path ,method: :post ,product_id: @product.id,class:"btn btn-warning" %>
-            <%= link_to "お気に入り", user_product_favorites_path, method: :post, class:"btn btn-default"%>
+
+            <% if added_cart?(@product) %>
+              <%= link_to "カートから外す",user_cart_item_path, product_id: :@product.id,method: :delete,class:"btn btn-warning" %>
+            <% else %>
+              <%= link_to "カートに入れる",user_cart_items_path ,method: :post ,product_id: @product.id,class:"btn btn-warning" %>
+            <% end %> 
+            <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
         </div>
     </div>
 
