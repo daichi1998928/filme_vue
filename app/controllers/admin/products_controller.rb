@@ -1,8 +1,9 @@
 class Admin::ProductsController < ApplicationController
 
   def index
-    @product = Product.all
-   end
+    @products = Product.page(params[:page]).per(4)
+  end
+
 
   def create
     @new_cd = Product.new(products_params)
