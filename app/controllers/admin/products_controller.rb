@@ -1,6 +1,8 @@
 class Admin::ProductsController < ApplicationController
+
   def index
-  end
+    @product = Product.all
+   end
 
   def create
     @new_cd = Product.new(products_params)
@@ -14,7 +16,6 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @new_cd = Product.new
-
   end
 
   def edit
@@ -24,16 +25,24 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(products_params)
-      flash[:notice_m] = "編集に成功しました"
+      flash[:notice_m] = "successful Edit CD"
     redirect_to admin_products_path
-
     else
       render "edit"
     end
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    if @product.delete
+       flash[:notice_m] = "successful Delete CD!!"
+       redirect_to admin_products_path
+    else
+       @product = Product.all
+       render "index"
+    end
   end
+
 
   private
   def products_params
