@@ -1,5 +1,9 @@
 <h1>Admin::Movies#index</h1>
 
+<% if flash[:notice_m] %>
+    <%= flash[:notice_m] %>
+<% end %>
+
 <% @movies.each do |m| %>
 
 <%= m.title %>

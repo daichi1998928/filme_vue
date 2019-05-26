@@ -7,7 +7,7 @@ class Admin::AdminsController < ApplicationController
   def destroy
   	@admin = Admin.find(params[:id])
   	if @admin.destroy
-      flash[:notice] = "管理者削除に成功しました"
+      flash[:notice_m] = "successful Delete AdminUser!!"
       redirect_to admin_users
     else
       @admins = Admin.all
@@ -15,10 +15,8 @@ class Admin::AdminsController < ApplicationController
 
   end
 
-# ※permitに何入れたらいいんでしょう。。。
-# private
-#   def admin_params
-#     params.require(:admin).permit(:email :name)
-#   end
-
+  private
+    def admin_params
+      params.require(:admin).permit(:email, :name, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at)
+    end
 end
