@@ -10,15 +10,12 @@ class Admin::MoviesController < ApplicationController
       flash[:movie] = "successful Created Movie!!"
     else
       render :new
-
     end
   end
 
   def show
     @movie = Movie.find(params[:id])
     @movie_relation_product = Product.where("product_title LIKE ?", "%#{@movie.title}%").first
-    
-
   end
 
   def new
@@ -36,6 +33,14 @@ class Admin::MoviesController < ApplicationController
   end
 
   def destroy
+    @movie = Movie.find(params[:id])
+    if @movie.delete
+       flash[:notice_m] = "successful Delete Movie!!"
+       redirect_to admin_movies_path
+    else
+       @movies = Movie.all
+       render "index"
+    end
   end
 
   private
