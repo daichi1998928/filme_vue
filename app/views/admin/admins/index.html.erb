@@ -1,7 +1,7 @@
 <h1>管理者一覧</h1>
 
-<% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
+<% if flash[:notice_m] %>
+    <%= flash[:notice_m] %>
 <% end %>
 
 <% @admins.each do |admin| %>

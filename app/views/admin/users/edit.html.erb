@@ -1,0 +1,16 @@
+<h1>User 編集</h1>
+
+<%= form_for (@user) do |f| %>
+
+	<h2>画像</h2>
+	<%= f.attachment_field :image %>
+	<h2>Name</h2>
+		<%= f.text_field :name,placeholder:"名前" %>
+
+		<%= f.submit"編集" %>
+
+<% end %>
+
+<h3>購入履歴</h3>
+
+

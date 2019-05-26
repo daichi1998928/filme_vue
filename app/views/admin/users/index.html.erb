@@ -1,8 +1,12 @@
 <h1>Admin::Users#index</h1>
 
+<% if flash[:notice_m] %>
+    <%= flash[:notice_m] %>
+<% end %>
+
 <% @users.each do |user| %>
 
  <%= user.name %>
  <%= link_to "編集",edit_user_path(user) %>
- <%= link_to "削除",admin_user_path(user) %>
+ <%= link_to "削除",admin_user_path(user),method: :delete %>
 <% end %>
