@@ -70,3 +70,4 @@ gem "refile-mini_magick"
 gem "cocoon"
 gem "pry-rails"
 gem 'kaminari', '~> 0.17.0'
+gem 'pry-byebug'

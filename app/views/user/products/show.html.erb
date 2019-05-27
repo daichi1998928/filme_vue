@@ -26,7 +26,7 @@
             <div><%= @product.label_name %></div><br>
 
             <% if added_cart?(@product) %>
-              <%= link_to "カートから外す",user_cart_item_path(@product.id),method: :delete,class:"btn btn-warning" %>
+              <%= link_to "カートから外す",user_cart_item_path(@product.id),method: :delete,class:"btn btn-success" %>
             <% else %>
               <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-warning" %>
             <% end %> 
@@ -48,19 +48,16 @@
           <td><%= trak.artist_name %></td>
         </tr>
       <% end %>
-    </table>
-
-    <% if @traks2.exists? %>
-     <div class="text-center disk2">Disk2</div>
-    <% end %>
-
-    <table width="100%" class="tracks">
+　     
+      <% if @traks2.exists? %>
+　       <tr><td colspan="3" class="disk-num text-center">Desk2</td></tr>
       <% @traks2.each do |trak| %>
         <tr>
           <td><%= trak.track_order %></td>
           <td><%= trak.track_name %></td>
           <td><%= trak.artist_name %></td>
         </tr>
+      <% end %>
       <% end %>
     </table>
 

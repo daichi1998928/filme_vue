@@ -6,14 +6,15 @@ class User::CartItemsController < ApplicationController
 	end
 	
 	def create
-		product=Product.find(params[:product_id])
-		cart_item=current_cart.cart_items.new(product_id: product.id, cart_id: current_cart.id)
+		cart_item=current_cart.cart_items.new(product_id: params[:product_id], cart_id: current_cart.id)
 		cart_item.save
-		redirect_to user_product_path(product)
+		redirect_to user_product_path(params[:product_id])
 	end
 
 	def destroy 
-		
+		cart_item=current_cart.cart_items.find_by(product_id: params[:id], cart_id: current_cart.id)
+		cart_item.destroy
+		redirect_to user_product_path(params[:id])
 	end
 
   private
