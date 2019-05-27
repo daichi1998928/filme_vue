@@ -8,10 +8,10 @@
             
             <% if @product.product_reviews.exists? %>
               <%= image_tag @product_review_average_file, :size => '60x20' %> 
+              <span class="review-count"> / <%= @product.product_reviews.count %> </span><br>
             <% end %>
 
-            <span class="review-count"> / <%= @product.product_reviews.count %> </span><br>
-              <div> 残り<%= @product.stock %></div><br>
+            <div> 残り<%= @product.stock %></div><br>
             <div class="price">¥ <%= @product.price %> /</div>
 
             
@@ -24,8 +24,13 @@
             <% end %>
            
             <div><%= @product.label_name %></div><br>
-            <%= link_to "カートに入れる",user_cart_items_path ,method: :post ,product_id: @product.id,class:"btn btn-warning" %>
-            <%= link_to "お気に入り", user_product_favorites_path, method: :post, class:"btn btn-default"%>
+
+            <% if added_cart?(@product) %>
+              <%= link_to "カートから外す",user_cart_item_path(@product.id),method: :delete,class:"btn btn-success" %>
+            <% else %>
+              <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-warning" %>
+            <% end %> 
+            <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
         </div>
     </div>
 
@@ -43,19 +48,16 @@
           <td><%= trak.artist_name %></td>
         </tr>
       <% end %>
-    </table>
-
-    <% if @traks2.exists? %>
-     <div class="text-center disk2">Disk2</div>
-    <% end %>
-
-    <table width="100%" class="tracks">
+　     
+      <% if @traks2.exists? %>
+　       <tr><td colspan="3" class="disk-num text-center">Desk2</td></tr>
       <% @traks2.each do |trak| %>
         <tr>
           <td><%= trak.track_order %></td>
           <td><%= trak.track_name %></td>
           <td><%= trak.artist_name %></td>
         </tr>
+      <% end %>
       <% end %>
     </table>
 
