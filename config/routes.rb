@@ -18,10 +18,11 @@ root to: 'root#top'
   namespace :user do
 
     resources :histories, :only => [:create,:index,:new]
-    resources :cart_items, :only => [:show,:create,:destroy]
+    resources :cart_items, :only => [:show,:destroy]
     resources :products, :only => [:index,:show] do
+      resource :cart_items, :only =>[:create]
       resources :product_reviews, :only =>[:create]
-      resources :favorites, :only => [:create,:destroy]
+      resource :favorites, :only => [:create,:destroy]
     end
   end
 

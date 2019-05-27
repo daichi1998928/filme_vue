@@ -8,10 +8,10 @@
             
             <% if @product.product_reviews.exists? %>
               <%= image_tag @product_review_average_file, :size => '60x20' %> 
+              <span class="review-count"> / <%= @product.product_reviews.count %> </span><br>
             <% end %>
 
-            <span class="review-count"> / <%= @product.product_reviews.count %> </span><br>
-              <div> 残り<%= @product.stock %></div><br>
+            <div> 残り<%= @product.stock %></div><br>
             <div class="price">¥ <%= @product.price %> /</div>
 
             
@@ -26,9 +26,9 @@
             <div><%= @product.label_name %></div><br>
 
             <% if added_cart?(@product) %>
-              <%= link_to "カートから外す",user_cart_item_path, product_id: :@product.id,method: :delete,class:"btn btn-warning" %>
+              <%= link_to "カートから外す",user_cart_item_path(@product.id),method: :delete,class:"btn btn-warning" %>
             <% else %>
-              <%= link_to "カートに入れる",user_cart_items_path ,method: :post ,product_id: @product.id,class:"btn btn-warning" %>
+              <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-warning" %>
             <% end %> 
             <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
         </div>
