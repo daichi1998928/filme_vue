@@ -13,10 +13,6 @@ class Admin::MoviesController < ApplicationController
     end
   end
 
-  def show
-    @movie = Movie.find(params[:id])
-    @movie_relation_product = Product.where("product_title LIKE ?", "%#{@movie.title}%").first
-  end
 
   def new
     @new_movie = Movie.new
