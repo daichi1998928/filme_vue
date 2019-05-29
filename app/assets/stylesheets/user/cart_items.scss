@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .cart-item-img{
-    width: 200px;
-    height: 200px;
+    width: 260px;
+    height: 250px;
 }
 .sum-box{
     border: solid 2px rgb(97, 94, 94);
@@ -15,4 +15,7 @@
 }
 .btn{
     margin-top:10px;
+}
+.price{
+    font-size:20px;
 }

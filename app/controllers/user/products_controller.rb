@@ -11,7 +11,7 @@ class User::ProductsController < ApplicationController
   end
 
   def create
-    @cart_item　= Cart
+ 
   end
 
 

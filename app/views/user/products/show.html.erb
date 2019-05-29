@@ -48,9 +48,9 @@
           <td><%= trak.artist_name %></td>
         </tr>
       <% end %>
-　     
+       
       <% if @traks2.exists? %>
-　       <tr><td colspan="3" class="disk-num text-center">Desk2</td></tr>
+         <tr><td colspan="3" class="disk-num text-center">Desk2</td></tr>
       <% @traks2.each do |trak| %>
         <tr>
           <td><%= trak.track_order %></td>
