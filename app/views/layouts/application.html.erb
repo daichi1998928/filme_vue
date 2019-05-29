@@ -16,7 +16,7 @@
     <% end %>
 
     <header>
-      <h1>Filme</h1>
+      <h1><%= link_to "Filme",user_products_path %></h1>
       <% if user_signed_in? %>
         <li>
           <span><%= link_to "マイページ",edit_user_path(current_user) %></span>
@@ -28,7 +28,8 @@
           <span><%= link_to "ログイン",new_user_registration_path %></span>
           <span><%= link_to "新規登録",new_user_registration_path %></span>
       <% else %>
-
+          <span><%= link_to "ログイン",new_user_session_path %></span>
+          <span><%= link_to "新規登録",new_user_registration_path %></span>
       <% end %>
     </header>
     <%= yield %>
