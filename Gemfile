@@ -71,3 +71,4 @@ gem "cocoon"
 gem "pry-rails"
 gem 'kaminari', '~> 0.17.0'
 gem 'pry-byebug'
+gem 'payjp'

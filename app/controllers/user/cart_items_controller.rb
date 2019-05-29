@@ -1,8 +1,7 @@
 class User::CartItemsController < ApplicationController
 
   def show
-  	@user = current_user
-  	@cart_item = CartItem.find(params[:id])
+		@cart_items = CartItem.where(cart_id: current_cart)
 	end
 	
 	def create

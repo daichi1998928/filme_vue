@@ -11,7 +11,6 @@
 
   <body>
     <div class="container">
-    <p><%= link_to "ログアウト (アプリケーション.htmlに書いている)", destroy_user_session_path, method: :delete %></p>
     <% if flash[:notice] %>
      <%= flash[:notice] %>
     <% end %>
@@ -20,8 +19,8 @@
       <h1>Filme</h1>
       <% if user_signed_in? %>
         <li>
-          <span><%= link_to "マイページ",user_products_path %></span>
-          <span><%= link_to "カートの中身","#" %></span>
+          <span><%= link_to "マイページ",edit_user_path(current_user) %></span>
+          <span><%= link_to "カートの中身", user_cart_item_path(current_cart) %></span>
           <span><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></span>
         </li>
 

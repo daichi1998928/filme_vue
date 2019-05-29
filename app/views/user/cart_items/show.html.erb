@@ -1,0 +1,26 @@
+<div class="row">
+  <h2 class="text-center profil-title">ショッピングカート</h2>
+
+  <div class="col-lg-8">
+    <% @cart_items.each do |cart_item| %>
+    <div class="row">
+        <% @product = Product.find(cart_item.id) %> 
+        <div class="col-lg-5">
+          <div><%= attachment_image_tag @product,:image,format:'jpeg',class:"cart-item-img" %></div>
+        </div>       
+        <div class="col-lg-7">
+            <div><%= @product.product_title %></div>
+            <div class="price">¥ <%= @product.price %></div>
+            <%= link_to "削除", user_cart_item_path(@product.id),method: :delete,class:"btn btn-default" %>
+        </div>   
+        <% end %>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="sum-box">
+      <div>合計</div>
+      <%= link_to "購入",new_user_history_path,class:"btn btn-warning" %>
+    </div>
+  </div>
+</div>
