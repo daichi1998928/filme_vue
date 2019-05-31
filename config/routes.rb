@@ -24,14 +24,15 @@ root to: 'root#top'
       resources :product_reviews, :only =>[:create]
       resource :favorites, :only => [:create,:destroy]
     end
+    resources :movies do
+      resource :movie_reviews,:only => [:create]
+    end
   end
 
   namespace :admin do
     resources :products,:except => [:show]
     resources :lp_images,:only => [:edit,:update]
-    resources :movies do
-      resource :movie_reviews,:only => [:create]
-    end
+    resources :movies ,:only => [:index,:create,:edit,:new]
     resources :users, :except =>[:show,:create]
   end
 
