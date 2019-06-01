@@ -1,11 +1,11 @@
 <% sum=0 %>
-<div class="row" id="app">
-  <h2 class="text-center profil-title">ショッピングカート</h2>
+<h2 class="text-center profil-title">ショッピングカート</h2>
+<div class="row row-eq-height" id="app">
   <div class="col-lg-8">
     <div class="item-box">
-    <% if flash[:error] %>
-      <%= flash[:error] %>
-   <% end %>
+     <% if flash[:error] %>
+       <%= flash[:error] %>
+     <% end %>
     <% @cart_items.each do |cart_item| %>
       <div class="row">
         <% @product = Product.find(cart_item.product_id) %> 
@@ -22,13 +22,12 @@
               <div class="quantity-box" ><%= cart_item.quantity %></div>
               <%= link_to "", user_cart_item_path(id:cart_item.id,add:true),method: :put,class:"glyphicon glyphicon-plus quantity-box" %><br>
             </div>
-              <%= link_to "削除", user_cart_item_path(@product.id), method: :delete,class:"btn btn-default" %>
+              <%= link_to "削除", user_cart_item_path(id:@product.id,is_show:false), method: :delete,class:"btn btn-default" %>
 
               <% sum+=@product.price*cart_item.quantity %>
         </div>      
-
-        <% end %>
-      </div>
+       </div>
+      <% end %>
     </div>
   </div>
 
