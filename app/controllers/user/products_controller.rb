@@ -11,7 +11,7 @@ class User::ProductsController < ApplicationController
   end
 
   def create
-    @cart_item　= Cart
+ 
   end
 
 
@@ -26,8 +26,6 @@ class User::ProductsController < ApplicationController
       @product_review_average = @product.product_reviews.average(:rate).ceil.to_s
       @product_review_average_file = 'star' + @product_review_average + '.png'
     end
-
-
   end
 
 

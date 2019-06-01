@@ -5,5 +5,6 @@ module User::ProductsHelper
         else
             @added_cart=true
         end
+        @added_cart
     end
 end

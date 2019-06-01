@@ -1,0 +1,35 @@
+<div class="row">
+   <h2 class="text-center profil-title">購入情報</h2>
+   <div class="col-lg-8 col-lg-offset-2">
+    <%= form_for [:user,@history] do |f| %>
+      <h4>お届け住所</h4>
+      <div class="field form-group">
+       <%= f.text_field :shopping_prefecture,class:"form-control", :value => "#{current_user.prefecture}" %>
+      </div>
+      <div class="field form-group">
+       <%= f.text_field :shopping_city,class:"form-control", :value => "#{current_user.city}" %>
+      </div> 
+      <div class="field form-group">
+        <%= f.text_field :shopping_adress,class:"form-control", :value => "#{current_user.adress}" %>
+      </div>
+      <div class="field form-group">
+        <%= f.text_field :shopping_postal_code,class:"form-control", :value => "#{current_user.postal_code}" %>
+      </div>
+
+      <h4 class="card-info">クレジット決済</h4>
+
+   
+      <script
+        type="text/javascript"
+        src="https://checkout.pay.jp/"
+        class="payjp-button"
+        data-key= 'pk_test_364c1013942fc019fd2d6b25' 
+        data-on-created="onCreated"
+        data-text="支払う"
+        data-submit-text="支払う"
+        ></script>
+   
+    <% end %>
+   </div>
+   
+</div>
