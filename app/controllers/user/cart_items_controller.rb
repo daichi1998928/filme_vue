@@ -1,7 +1,7 @@
 class User::CartItemsController < ApplicationController
-
-  def show
-		@cart_items = CartItem.where(cart_id: current_cart)
+	
+	def show
+        @cart_items = CartItem.where(cart_id: current_cart)
 	end
 	
 	def create

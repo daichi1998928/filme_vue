@@ -3,9 +3,12 @@
   <h2 class="text-center profil-title">ショッピングカート</h2>
   <div class="col-lg-8">
     <div class="item-box">
+    <% if flash[:error] %>
+      <%= flash[:error] %>
+   <% end %>
     <% @cart_items.each do |cart_item| %>
       <div class="row">
-        <% @product = Product.find(cart_item.id) %> 
+        <% @product = Product.find(cart_item.product_id) %> 
         <div class="col-lg-5">
           <div><%= attachment_image_tag @product,:image,format:'jpeg',class:"cart-item-img" %></div>
         </div>   
