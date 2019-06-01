@@ -20,6 +20,29 @@
  border-bottom: solid;
  padding: 10px 0;
 }
+
+.new_movie_block{
+  display: inline-block;
+}
+.new_movie_detail_block{
+  margin-top:50px;
+  display: block;
+  width: 570px;
+}
+.movie_title_field{
+  width: 300px;
+}
+.movie_url_field{
+  width: 300px;
+}
+.movie_detail_field{
+  width: 570px;
+  height: 500px;
+}
+.movie_new_btn{
+  margin-top:20px !important;
+  display: inline-block;
+
 .movie{
   margin-bottom: 10px;
 }

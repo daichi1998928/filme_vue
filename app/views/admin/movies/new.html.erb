@@ -1,35 +1,43 @@
-<h1>Admin::Movies#new</h1>
-<p>Find me in app/views/admin/movies/new.html.erb</p>
-<% if @new_movie.errors.any? %>
-  <% @new_movie.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-<% end %>
+<div class="row">
+   <div class="col-lg-8 col-lg-offset-2">
+     <h1 >映画新規登録</h1>
+      <% if @new_movie.errors.any? %>
+        <% @new_movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      <% end %>
 
 
-<%= form_for [:admin,@new_movie] do |f| %>
-    <div class="field">
-      <%= f.label :title %>
-    <br/>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :url %>
-    <br/>
-      <%= f.text_area :url %>
-    </div>
-    <div class="field">
-      <%= f.label :movie_image %>
-    <br/>
-      <%= f.attachment_field :image %>
-    </div>
-    <div class="field">
-      <%= f.label :detail %>
-    <br/>
-      <%= f.text_area :detail %>
-    </div>
+      <%= form_for [:admin,@new_movie] do |f| %>
+          <div class="new_movie_block">
+            <div class="movie_image_block">
+              <%= f.label :映画のイメージ画像 %>
+            <br/>
+              <%= f.attachment_field :image %>
+            </div>
+          </div>
+          <div class="new_movie_block">
+            <div class="movie_title">
+              <%= f.label :映画タイトル %>
+            <br/>
+              <%= f.text_field :title,class:"movie_title_field" %>
+            </div>
+            <div class="movie_url">
+              <%= f.label :映画url %>
+            <br/>
+              <%= f.text_area :url,class:"movie_url_field" %>
+            </div>
+          </div>
+          <div class="new_movie_detail_block">
+            <div class="movie_detail">
+              <%= f.label :映画詳細情報 %>
+            <br/>
+              <%= f.text_area :detail,class:"movie_detail_field" %>
+            </div>
 
+          </div>
 
-  <%= f.submit %>
-
-<% end %>
+        <%= f.submit "映画新規登録", class: "btn btn-primary movie_new_btn" %>
+      <% end %>
+   </div>
+</div>
