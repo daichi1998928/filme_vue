@@ -39,7 +39,7 @@ class User::HistoriesController < ApplicationController
       current_cart.cart_items.each do |cart_item|
         @product=Product.find(cart_item.product_id)
         if @product.stock-cart_item.quantity < 0
-          redirect_to user_cart_item(current_cart.id), error: "#{@product.product_title}は#{@product.quantity}までしか購入が出来ません"
+          redirect_to user_cart_item_path(current_cart.id), error: "#{@product.product_title}は#{@product.stock}までしか購入が出来ません"
         end
       end
     end
