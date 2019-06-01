@@ -32,7 +32,7 @@ root to: 'root#top'
   namespace :admin do
     resources :products,:except => [:show]
     resources :lp_images,:only => [:edit,:update]
-    resources :movies ,:only => [:index,:create,:edit,:new]
+    resources :movies ,:only => [:index,:create,:edit,:new,:destroy]
     resources :users, :except =>[:show,:create]
   end
 
