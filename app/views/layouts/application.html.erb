@@ -15,27 +15,29 @@
     <p><%= link_to "ログアウト (アプリケーション.htmlに書いている)", destroy_user_session_path, method: :delete %></p>
 
     <header>
+      <nav class='nav navbar-nav navbar-left' >
+        <span class="logo header_title"><%= link_to "Filme",user_products_path %></span>
+      </nav>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li><%= link_to "マイページ",user_products_path %></li>
+            <li><%= link_to "カートの中身",user_cart_item_path(current_cart) %></li>
+            <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></li>
+        <% elsif admin_signed_in? %>
+            <li><%= link_to "ログイン",new_user_registration_path %></li>
+            <li><%= link_to "新規登録",new_user_registration_path %></li>
+        <% else %>
+        　  <li><%= link_to "ログイン",new_user_registration_path %></li>
+            <li><%= link_to "新規登録",new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </header>
+    
     <% if flash[:notice] %>
       <%= flash[:notice] %>
     <% end %>
-        <nav class='nav navbar-nav navbar-left' >
-         <span class="logo header_title"><%= link_to "Filme",user_products_path %></span>
-        </nav>
 
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-              <li><%= link_to "マイページ",user_products_path %></li>
-              <li><%= link_to "カートの中身",user_cart_item_path(current_cart) %></li>
-              <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></li>
-          <% elsif admin_signed_in? %>
-              <li><%= link_to "ログイン",new_user_registration_path %></li>
-              <li><%= link_to "新規登録",new_user_registration_path %></li>
-          <% else %>
-          　  <li><%= link_to "ログイン",new_user_registration_path %></li>
-              <li><%= link_to "新規登録",new_user_registration_path %></li>
-          <% end %>
-        </ul>
-    </header>
     <%= yield %>
     <footer>
       <small>© CIRCUS</small>
