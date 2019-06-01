@@ -19,18 +19,19 @@ class User::HistoriesController < ApplicationController
        sum+=item.quantity*Product.find(item.product_id).price
       end
 
-      Payjp.api_key = ENV['PRIME_KEY']
+      Payjp.api_key = ENV['SECRET_KEY']
         Payjp::Charge.create(
           amount: sum, # 決済する値段
           card: params['payjp-token'],
           currency: 'jpy'
         )
   
-        current_cart.cart_items.each do|cart_item|
-          HistoryItem.create(product_id: cart_item.product_id,
-                             product_price: Product.find(cart_item.product_id).price,
-                             quantity: cart_item.quantity
-                            )
+        current_cart.cart_items.each do |cart_item|
+          @history.history_items.create(product_id: cart_item.product_id,
+                                        product_price: Product.find(cart_item.product_id).price,
+                                        quantity: cart_item.quantity,
+                                        user_id:current_user.id
+                                        )
         end
         
         redirect_to products_buy_path, notice: "支払いが完了しました"
