@@ -15,10 +15,37 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .clearfix::after {
    content: "";
    display: block;
    clear: both;
  }
+
+header{
+	background-color: #00FF00;
+	width: 100%;
+	height: 70px;
+}
+
+.header_title{
+	margin-left: 35px;
+	margin-top: 15px;
+	font-size: 40px;
+}
+
+footer{
+	background-color: #00FF00;
+	width: 100%;
+	height: 70px;
+}
+
+small{
+	margin:0 auto;
+	margin-top: 25px;
+}

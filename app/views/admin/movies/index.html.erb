@@ -1,17 +1,35 @@
-<h1>Admin::Movies#index</h1>
 
 <% if flash[:notice_m] %>
     <%= flash[:notice_m] %>
 <% end %>
 
-<% @movies.each do |m| %>
 
-<%= m.title %>
+<div class="row">
+  <table class="col-lg-8 col-lg-offset-4">
+       <h1 style="text-align:center;">映画一覧</h1>
+         <thead>
+           <tr>
+             <th ></th>
+             <th class="movie_name">映画名</th>
+           </tr>
+         </thead>
+       <% @movies.each do |movie| %>
+        <div class="movie">
+           <tr>
+             <td class="movie_image">
+               <%= attachment_image_tag movie, :image, :fill, 100, 100%>
+             </td>
+             <td class="movie_title"><%= movie.title %></td>
+             <td><%= link_to "編集",edit_admin_movie_path(movie),class: "btn btn-primary movie_edit" %></td>
+             <td><%= link_to "削除", admin_movie_path(movie), method: :delete,class: "btn btn-primary movie_delete" %></td>
 
-<%= m.url %>
+           </tr>
+         </div>
 
-<%= attachment_image_tag m, :image,fallback: "finish.jpeg"%>
 
-<%= m.detail %>
-
-<% end %>
+       <% end %>
+     </table>
+     <div class="movie_paginate col-lg-offset-4">
+       <%= paginate @movies %>
+     </div>
+</div>
