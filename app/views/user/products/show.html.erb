@@ -25,7 +25,7 @@
            
             <div><%= @product.label_name %></div><br>
 
-            <% if added_cart?(@product) %>
+            <% if added_cart?(@product,current_cart.id) %>
               <%= link_to "カートから外す",user_cart_item_path(id:@product.id, is_show:true),method: :delete,class:"btn btn-success" %>
             <% else %>
               <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-warning" %>
