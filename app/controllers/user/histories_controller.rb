@@ -32,6 +32,7 @@ class User::HistoriesController < ApplicationController
           @product.update(stock:@product.stock-cart_item.quantity)
         end
         current_cart.update(juge_use:false)
+        @cart=Cart.create(user_id:current_user.id)
         redirect_to products_buy_path, notice: "支払いが完了しました"
     end
 

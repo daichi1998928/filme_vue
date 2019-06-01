@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
   # end
 
   def current_cart
-     if @cart = Cart.find_by(juge_use: true,user_id: current_user).nil?
+    if Cart.find_by(juge_use: true,user_id: current_user).nil?
       @cart=Cart.create(user_id:current_user.id)
-     else 
+    else 
       @cart = Cart.find_by(juge_use: true,user_id: current_user)
     end
   end

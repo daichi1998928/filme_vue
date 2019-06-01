@@ -13,7 +13,7 @@ class User::CartItemsController < ApplicationController
 	def destroy 
 		cart_item=current_cart.cart_items.find_by(product_id: params[:id], cart_id: current_cart.id)
 		cart_item.destroy
-		if params[:is_show]=="true"
+		if params[:is_show ]== "true"
 		 redirect_to user_product_path(params[:id])
 		else
 		 redirect_to user_cart_item_path(current_cart)
