@@ -1,3 +1,34 @@
 // Place all the styles related to the User::CartItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.cart-item-img{
+    width: 260px;
+    height: 250px;
+}
+.sum-box{
+    border: solid 2px rgb(97, 94, 94);
+    border-radius: 5px;
+    .btn{
+        width:80%;
+        margin-bottom: 13px;
+    }
+}
+.btn{
+    margin-top:10px;
+}
+.price{
+    font-size:30px;
+}
+.product-title{
+    font-size:25px;
+}
+.box{
+    font-size:25px;
+}
+.quantity-box{
+    display:inline-block;
+}
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -7,14 +7,12 @@
             <h1 class="product-title"><%= @product.product_title %></h1>
             
             <% if @product.product_reviews.exists? %>
+             <div class="view-review">
               <%= image_tag @product_review_average_file, :size => '60x20' %> 
-              <span class="review-count"> / <%= @product.product_reviews.count %> </span><br>
+              <span class="review-count"> / <%= @product.product_reviews.count %> </span>
+             </div> 
             <% end %>
 
-            <div> 残り<%= @product.stock %></div><br>
-            <div class="price">¥ <%= @product.price %> /</div>
-
-            
             <% unless @product.product_reviewed_by?(current_user) %>
               <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
                 <%= f.label :rate %>
@@ -22,15 +20,24 @@
                 <%= f.submit %>
               <% end %>
             <% end %>
-           
-            <div><%= @product.label_name %></div><br>
 
-            <% if added_cart?(@product) %>
-              <%= link_to "カートから外す",user_cart_item_path(@product.id),method: :delete,class:"btn btn-success" %>
-            <% else %>
-              <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-warning" %>
-            <% end %> 
-            <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
+
+            <div class="stock">
+             <div>/ 残り<%= @product.stock %></div>
+             <div>/ <%= @product.label_name %></div>
+            </div>
+        
+            <div class="price">¥ <%= @product.price %></div>
+           
+            <div class="btn-box">
+             <% if added_cart?(@product,current_cart.id) %>
+               <%= link_to "カートから外す",user_cart_item_path(id:@product.id, is_show:true),method: :delete,class:"btn btn-success" %>
+             <% else %>
+               <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-warning" %>
+             <% end %> 
+             <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
+            </div>    
+
         </div>
     </div>
 
@@ -48,9 +55,9 @@
           <td><%= trak.artist_name %></td>
         </tr>
       <% end %>
-　     
+       
       <% if @traks2.exists? %>
-　       <tr><td colspan="3" class="disk-num text-center">Desk2</td></tr>
+         <tr><td colspan="3" class="disk-num text-center">Desk2</td></tr>
       <% @traks2.each do |trak| %>
         <tr>
           <td><%= trak.track_order %></td>

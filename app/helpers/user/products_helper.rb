@@ -1,9 +1,6 @@
 module User::ProductsHelper
-    def added_cart?(product)
-        if CartItem.where(id: current_cart.id, product_id: product.id).empty?
-            @added_cart=false
-        else
-            @added_cart=true
-        end
+    
+    def added_cart?(product,cart_id)
+      CartItem.where(cart_id: cart_id, product_id: product.id).exists?
     end
 end
