@@ -31,7 +31,7 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-    def products_params
+    def user_params
       params.require(:user).permit(:email, :encrypted_password,:reset_password_token,:reset_password_sent_at,:remember_created_at ,name:, :phonetic_name, :postal_code, :prefecture, :city, :adress, :phone_number, :image)
     end
   end
