@@ -1,6 +1,6 @@
 class Admin::AdminsController < ApplicationController
   def index
-    @admins = Admin.all
+    @admins = Admin.page(params[:page]).per(4)
   end
 
 
@@ -12,7 +12,7 @@ class Admin::AdminsController < ApplicationController
     else
       @admins = Admin.all
       render "index"
-
+    end
   end
 
   private

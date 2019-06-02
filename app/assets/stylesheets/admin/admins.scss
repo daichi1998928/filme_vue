@@ -11,3 +11,20 @@
 .sign_up_label{
   margin: 30px 0 50px 0;
 }
+.admin_name_label ,.admin_email_label{
+  margin-left: 10px;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+}
+.admin{
+  margin-bottom: 10px;
+}
+.admin_name,.admin_email{
+  display: inline-block;
+  margin: 30px 10px 30px 10px;
+  font-size:20px;
+}
+.admin_delete{
+  margin-top: 0 !important;
+}
