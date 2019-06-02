@@ -7,8 +7,8 @@
         <div class="rank-box">
     　     <% @ranks.each do |rank| %>
             <% movie=Movie.find(rank[1]) %>
-            <div><%= i+=1 %>位 <%= link_to Movie.title,user_movie_path(movie.id) %></div>
-        <% end %>
+            <div><%= i+=1 %>位 <%= link_to movie.title,user_movie_path(movie.id) %></div>
+           <% end %>
         </div>
     　 </div>
     </div>

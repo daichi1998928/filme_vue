@@ -25,8 +25,8 @@ class User::MoviesController < ApplicationController
     @ranks=[]
     Movie.all.each do |movie|
      unless movie.movie_reviews.average(:rate).to_s.empty?
-      val1=product.product_reviews.average(:rate).to_s
-      val2=product.id
+      val1=movie.movie_reviews.average(:rate).to_s
+      val2=movie.id
       @ranks<<[val1, val2]
      end
     end
