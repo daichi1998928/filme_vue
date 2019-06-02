@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(10)
   end
 
   def edit
@@ -18,6 +18,7 @@ class Admin::UsersController < ApplicationController
     else
        @users = User.all
        render "index"
+    end
   end
 
   def destroy
@@ -28,12 +29,12 @@ class Admin::UsersController < ApplicationController
     else
        @users = User.all
        render "index"
+    end
   end
 
   private
     def products_params
-      params.require(:user).permit(:email, :encrypted_password,:reset_password_token,:reset_password_sent_at,:remember_created_at ,name:, :phonetic_name, :postal_code, :prefecture, :city, :adress, :phone_number, :image)
+      params.require(:user).permit(:email, :encrypted_password,:reset_password_token,:reset_password_sent_at,:remember_created_at ,:name, :phonetic_name, :postal_code, :prefecture, :city, :adress, :phone_number, :image)
     end
-  end
 
 end

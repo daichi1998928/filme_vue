@@ -12,7 +12,7 @@
               <span class="review-count"> / <%= @product.product_reviews.count %> </span>
              </div> 
             <% end %>
-            
+
             <% unless @product.product_reviewed_by?(current_user) %>
               <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
                 <%= f.label :rate %>
@@ -20,6 +20,7 @@
                 <%= f.submit %>
               <% end %>
             <% end %>
+
 
             <div class="stock">
              <div>/ 残り<%= @product.stock %></div>
@@ -36,6 +37,7 @@
              <% end %> 
              <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
             </div>    
+
         </div>
     </div>
 
