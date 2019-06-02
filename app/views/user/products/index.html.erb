@@ -8,7 +8,9 @@
 
   <div class="col-lg-3 ranking">
     <p class="title">ランキング</p>
-    <div>1位</div>
+    <% for i in 1..5 %>
+    <div><%= i %>位</div>
+    <% end %>
   </div>
 
   <div class="col-lg-8 col-lg-offset-1">
