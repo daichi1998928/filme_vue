@@ -10,18 +10,18 @@
          <thead>
            <tr>
              <th ></th>
-             <th class="movie_name">User名</th>
+             <th class="user_name_label">User名</th>
            </tr>
          </thead>
        <% @users.each do |user| %>
-        <div class="movie">
+        <div class="user">
            <tr>
-             <td class="movie_image">
+             <td class="user_image">
                <%= attachment_image_tag user, :image, :fill, 100, 100%>
              </td>
-             <td class="movie_title"><%= user.name %></td>
-             <td><%= link_to "編集", edit_admin_user_path(user),class: "btn btn-primary movie_edit" %></td>
-             <td><%= link_to "削除", admin_user_path(user), method: :delete,class: "btn btn-primary movie_delete" %></td>
+             <td class="user_name"><%= user.name %></td>
+             <td><%= link_to "編集", edit_admin_user_path(user),class: "btn btn-primary user_edit" %></td>
+             <td><%= link_to "削除", admin_user_path(user), method: :delete,class: "btn btn-primary user_delete" %></td>
 
            </tr>
          </div>
