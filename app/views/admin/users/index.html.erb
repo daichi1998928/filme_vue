@@ -1,12 +1,35 @@
-<h1>Admin::Users#index</h1>
 
 <% if flash[:notice_m] %>
     <%= flash[:notice_m] %>
 <% end %>
 
-<% @users.each do |user| %>
 
- <%= user.name %>
- <%= link_to "編集",edit_user_path(user) %>
- <%= link_to "削除",admin_user_path(user),method: :delete %>
-<% end %>
+<div class="row">
+  <table class="col-lg-8 col-lg-offset-4">
+       <h1 style="text-align:center;">User一覧</h1>
+         <thead>
+           <tr>
+             <th ></th>
+             <th class="movie_name">User名</th>
+           </tr>
+         </thead>
+       <% @users.each do |user| %>
+        <div class="movie">
+           <tr>
+             <td class="movie_image">
+               <%= attachment_image_tag user, :image, :fill, 100, 100%>
+             </td>
+             <td class="movie_title"><%= user.name %></td>
+             <td><%= link_to "編集", edit_admin_user_path(user),class: "btn btn-primary movie_edit" %></td>
+             <td><%= link_to "削除", admin_user_path(user), method: :delete,class: "btn btn-primary movie_delete" %></td>
+
+           </tr>
+         </div>
+
+
+       <% end %>
+     </table>
+     <div class="movie_paginate col-lg-offset-4">
+       <%= paginate @users %>
+     </div>
+</div>

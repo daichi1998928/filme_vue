@@ -7,7 +7,6 @@ class User::ProductsController < ApplicationController
 
   def index
     @products=Product.where("stock > ?",0)
-
   end
 
   def create
