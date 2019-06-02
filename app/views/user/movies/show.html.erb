@@ -16,7 +16,9 @@
       </p>
         <div class="row-eq-height">
           <div class="movie_relation_product">
-           <button class="btn btn-warning"> <%= link_to "サウンドトラックを見る!",user_product_path(@movie_relation_product.id), style: "color: white;" %></button>
+           <% unless @movie_relation_product.nil? %>
+            <button class="btn btn-warning"> <%= link_to "サウンドトラックを見る!",user_product_path(@movie_relation_product.id), style: "color: white;" %></button>
+           <% end %>
           </div>
           <div class="movie_review" style="margin-left: 10px;">
            <% unless @movie.movie_reviewed_by?(current_user) %>

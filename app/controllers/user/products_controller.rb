@@ -14,7 +14,6 @@ class User::ProductsController < ApplicationController
       @ranks<<[val1, val2]
      end
     end
-    
     @ranks=@ranks.sort { |a, b| a[0] <=> b[0] }.reverse.first(5)
     @products=Product.where("stock > ?",0)
   end
