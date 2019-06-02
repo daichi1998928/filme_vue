@@ -8,7 +8,13 @@
 
   <div class="col-lg-3 ranking">
     <p class="title">ランキング</p>
-    <div>1位</div>
+    <% i=0 %>
+    <div class="rank-box">
+      <% @ranks.each do |rank| %>
+        <% product=Product.find(rank[1]) %>
+        <div><%= i+=1 %>位 <%= link_to product.product_title,user_product_path(product.id) %></div>
+      <% end %>
+    </div>
   </div>
 
   <div class="col-lg-8 col-lg-offset-1">
