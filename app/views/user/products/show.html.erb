@@ -11,10 +11,16 @@
               <span class="review-count"> / <%= @product.product_reviews.count %> </span><br>
             <% end %>
 
-            <div> 残り<%= @product.stock %></div><br>
-            <div class="price">¥ <%= @product.price %> /</div>
+            <div>
+             <% if @product.stock!=0 %>
+              残り<%= @product.stock %> 
+             <% else %>
+              売り切れ
+             <% end %>
+            </div><br>
 
-            
+            <div class="price">¥ <%= @product.price %> /</div>
+        
             <% unless @product.product_reviewed_by?(current_user) %>
               <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
                 <%= f.label :rate %>
@@ -25,7 +31,7 @@
            
             <div><%= @product.label_name %></div><br>
 
-            <% if added_cart?(@product,current_cart.id) %>
+            <% if added_cart?(@product,current_cart.id) && @product.stock!=0 %>
               <%= link_to "カートから外す",user_cart_item_path(id:@product.id, is_show:true),method: :delete,class:"btn btn-success" %>
             <% else %>
               <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-warning" %>
