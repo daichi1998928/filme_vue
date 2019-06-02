@@ -29,13 +29,30 @@
 
 header{
 	width: 100%;
-	height: 70px;
+	height: 80px;
+}
+
+.top-box{
+	width: 100%;
+	height: 80px;
 }
 
 .header_title{
 	margin-left: 35px;
-	margin-top: 15px;
-	font-size: 40px;
+	margin-top: 9px;
+	font-size: 45px;
+	float: left;
+}
+
+.top-list{
+	font-size: 15px;
+    float: right;
+	margin: 30px 50px 0 0;
+}
+
+.top-list_item{
+	font-size: 15px;
+	margin: 0 10px 0 0;
 }
 
 footer{
@@ -44,7 +61,21 @@ footer{
 	height: 70px;
 }
 
-small{
-	margin:0 auto;
-	margin-top: 25px;
+.bottom-box{
+	width: 100%;
+	height: 70px;
+	position: relative; 
+    overflow: hidden; 
 }
+
+small{
+	position: relative;
+    left: 50%; 
+    float: left;
+    margin-top: 25px;
+}
+
+
+
+
+
