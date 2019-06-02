@@ -6,7 +6,16 @@ class User::ProductsController < ApplicationController
   end
 
   def index
+    @ranks=[]
+    Product.all.each do |product|
+     unless product.product_reviews.average(:rate).to_s.empty? && Product.find(product.id).stock==0
+      val1=product.product_reviews.average(:rate).to_s
+      val2=product.id
+      @ranks<<[val1, val2]
+     end
+    end
     
+    @ranks=@ranks.sort { |a, b| a[0] <=> b[0] }.reverse.first(5)
     @products=Product.where("stock > ?",0)
   end
 
