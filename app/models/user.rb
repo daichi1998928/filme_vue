@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :movie_reviews
   has_many :history
   attachment :image
+  has_many :favorites
 end

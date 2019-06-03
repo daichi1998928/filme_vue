@@ -33,9 +33,14 @@
              <% if added_cart?(@product,current_cart.id) %>
                <%= link_to "カートから外す",user_cart_item_path(id:@product.id, is_show:true),method: :delete,class:"btn btn-success" %>
              <% else %>
-               <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-warning" %>
+               <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-default" %>
              <% end %> 
-             <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
+
+             <% if @product.favorited_by?(current_user) %>
+              <%= link_to "お気に入りを外す", user_product_favorites_path(@product.id), method: :delete, class:"btn btn-warning" %> 
+             <% else %>
+              <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
+             <% end %>
             </div>    
 
         </div>

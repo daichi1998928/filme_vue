@@ -1,0 +1,12 @@
+<div class="row">
+<%= form_with model:@user do |f|%>
+  <div class="col-lg-3">
+    <%= render 'user/users/sidebar',user:current_user,edit:false %>
+  </div>
+
+  <div class="col-lg-9">
+    <h2 class="text-center profil-title">お気に入り</h2>
+    
+  </div>
+
+</div>
