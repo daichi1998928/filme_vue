@@ -3,10 +3,10 @@
 <div class="clearfix">
   <div class=" row-eq-height" style="margin: 10px 0;">
 
-    <div class="movie-img">
+    <div class="movie-img col-lg-4 col-lg-offset-1">
       <%= attachment_image_tag @movie, :image,:size => "300x300" %>
     </div>
-    <div class="movie-information">
+    <div class="movie-information ">
       <h1>映画名:<%= @movie.title %></h1>
       <p class="average_movie_review">
         <% if @movie.movie_reviews.exists? %>
