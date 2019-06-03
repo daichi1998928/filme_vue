@@ -11,38 +11,47 @@
   </head>
 
   <body>
+    <!-- ページ飛びやすくするために書いてます。後ほど消す -->
     <div class="container">
-
-    <p><%= link_to "ログアウト (アプリケーション.htmlに書いている)", destroy_user_session_path, method: :delete %></p>
+      <p><%= link_to "ログアウト (アプリケーション.htmlに書いている)", destroy_user_session_path, method: :delete %></p>
+      <p><%= link_to "マイページ(アプリケーション.htmlに書いている)",edit_user_path(current_user) %></p>
+      <p><%= link_to "カートの中身(アプリケーション.htmlに書いている)",user_cart_item_path(current_cart) %></p>
+      <p><%= link_to "ログイン(アプリケーション.htmlに書いている)",new_user_session_path %></p>
+      <p><%= link_to "新規登録(アプリケーション.htmlに書いている)",new_user_registration_path %></p>
+    </div>
 
     <header>
-      <nav class='nav navbar-nav navbar-left' >
-        <span class="logo header_title"><%= link_to "Filme",user_products_path %></span>
-      </nav>
+      <div class="top-box clearfix">
+        <p class="header_title">Filme</p>
+        <div class="top-list">
+          <% if user_signed_in? %>
+              <span><%= link_to "マイページ",edit_user_path(current_user) %></span>
 
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-            <li><%= link_to "マイページ",edit_user_path(current_user) %></li>
-            <li><%= link_to "カートの中身",user_cart_item_path(current_cart) %></li>
-            <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></li>
-        <% elsif admin_signed_in? %>
-            <li><%= link_to "ログイン",new_user_registration_path %></li>
-            <li><%= link_to "新規登録",new_user_registration_path %></li>
-        <% else %>
-        　  <li><%= link_to "ログイン",new_user_registration_path %></li>
-            <li><%= link_to "新規登録",new_user_registration_path %></li>
+              <span class="top-list_item"><%= link_to "カートの中身",user_cart_item_path(current_cart) %></span>
+
+              <span class="top-list_item"><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></span>
+
+          <% elsif admin_signed_in? %>
+              <span class="top-list_item"><%= link_to "ログイン",new_user_session_path %></span>
+
+              <span><%= link_to "新規登録",new_user_registration_path %></span>
+          <% else %>
+
+          <% end %>
+        </div>
+
+        <% if flash[:notice] %>
+          <%= flash[:notice] %>
         <% end %>
-      </ul>
+      </div>
     </header>
-    
-    <% if flash[:notice] %>
-      <%= flash[:notice] %>
-    <% end %>
 
     <%= yield %>
+
     <footer>
-      <small>© CIRCUS</small>
+      <div class="bottom-box clearfix">
+       <small>© CIRCUS</small>
+     </div>
     </footer>
-    </div>
   </body>
 </html>
