@@ -4,7 +4,8 @@
     <title>Filme</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,7 +14,7 @@
     <!-- ページ飛びやすくするために書いてます。後ほど消す -->
     <div class="container">
       <p><%= link_to "ログアウト (アプリケーション.htmlに書いている)", destroy_user_session_path, method: :delete %></p>
-      <p><%= link_to "マイページ(アプリケーション.htmlに書いている)",user_products_path %></p>
+      <p><%= link_to "マイページ(アプリケーション.htmlに書いている)",edit_user_path(current_user) %></p>
       <p><%= link_to "カートの中身(アプリケーション.htmlに書いている)",user_cart_item_path(current_cart) %></p>
       <p><%= link_to "ログイン(アプリケーション.htmlに書いている)",new_user_session_path %></p>
       <p><%= link_to "新規登録(アプリケーション.htmlに書いている)",new_user_registration_path %></p>
@@ -24,7 +25,7 @@
         <p class="header_title">Filme</p>
         <div class="top-list">
           <% if user_signed_in? %>
-              <span><%= link_to "マイページ",user_products_path %></span>
+              <span><%= link_to "マイページ",edit_user_path(current_user) %></span>
 
               <span class="top-list_item"><%= link_to "カートの中身",user_cart_item_path(current_cart) %></span>
 

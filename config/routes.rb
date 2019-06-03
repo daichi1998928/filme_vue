@@ -24,7 +24,7 @@ root to: 'root#top'
       resources :product_reviews, :only =>[:create]
       resource :favorites, :only => [:create,:destroy]
     end
-    resources :movies do
+    resources :movies,:only => [:index,:show] do
       resource :movie_reviews,:only => [:create]
     end
   end

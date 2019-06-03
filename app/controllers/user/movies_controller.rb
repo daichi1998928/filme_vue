@@ -21,6 +21,18 @@ class User::MoviesController < ApplicationController
   	@movie = Movie.find(params[:id])
   end
 
+  def index
+    @ranks=[]
+    Movie.all.each do |movie|
+     unless movie.movie_reviews.average(:rate).to_s.empty?
+      val1=movie.movie_reviews.average(:rate).to_s
+      val2=movie.id
+      @ranks<<[val1, val2]
+     end
+    end
+    @ranks=@ranks.sort { |a, b| a[0] <=> b[0] }.reverse.first(5)
+    @movies=Movie.all
+  end
 
 
 private
