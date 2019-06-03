@@ -7,7 +7,7 @@ class Admin::LpImagesController < ApplicationController
   def update
   	@lp_image = LpImage.find(params[:id])
   	if @lp_image.update
-  	   flash[:notice] = "投稿に成功しました"
+  	   flash[:notice_m] = "successful update image!!"
        redirect_to edit_admin_lp_image_path(@lp_image)
     else
       render "edit"
