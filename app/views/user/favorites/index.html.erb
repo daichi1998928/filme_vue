@@ -5,8 +5,27 @@
   </div>
 
   <div class="col-lg-9">
-    <h2 class="text-center profil-title">お気に入り</h2>
-    
-  </div>
+    <div class="row">
+      <h2 class="text-center profil-title">お気に入り</h2>
 
+      <% @favo_products.each do |product| %>
+        <div class="col-lg-8">
+          <%= attachment_image_tag product[0], :image,:size => "200x200" %>
+          <div><%= product[0].product_title %></div>
+          <div><%= product[0].price %></div>
+        </div>
+
+        <div class="col-lg-4">
+         <% if added_cart?(product[0],current_cart.id) %>
+           <%= link_to "カートから外す",user_cart_item_path(id:product[0].id, is_show:true),method: :delete,class:"btn btn-success" %>
+         <% else %>
+           <%= link_to "カートに入れる",user_product_cart_items_path(product[0].id),method: :post,class:"btn btn-default" %>
+         <% end %> 
+
+         <%= link_to "お気に入りを外す", user_product_favorites_path(product[0].id), method: :delete, class:"btn btn-warning" %> 
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 </div>
