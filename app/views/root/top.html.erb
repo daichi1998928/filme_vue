@@ -1,10 +1,13 @@
 <div class="row">
-  <div class="main center-block">
+  <div class="main">
 
-    <% unless @lp_image_tag.nil? %>
-      <%= attachment_image_tag @lp_image, :image,:fill, 160, 160 %>
+    <% unless @lp_image.nil? %>
+    <div class="top-img">
+      <%= attachment_image_tag @lp_image, :image %>
+      <%= link_to "商品をみてみる",user_products_path,class:"btn btn-primary" %>
+    </div> 
     <% end %>
-    <%= link_to "商品をみてみる",user_products_path,class:"btn btn-primary center-block" %>
+
   </div>
   <div class="how_to_use center-block"></div>
 </div>
