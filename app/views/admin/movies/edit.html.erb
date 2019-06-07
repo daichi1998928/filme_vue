@@ -1,18 +1,40 @@
-<h1>映画編集</h1>
+<div class="row">
+   <div class="col-lg-8 col-lg-offset-2">
+    <h1>映画編集</h1>
 
-<%= form_for(@movie) do |f| %>
+    <% if flash[:notice_m] %>
+      <%= flash[:notice_m] %>
+    <% end %>
 
-  <%= f.attachment_field :image %>
+<%= form_for(@movie,url:admin_movie_path(@movie)) do |f| %>
+  <div class="new_movie_block">
+    <div class="movie_image_block">
+     <%= attachment_image_tag @movie, :image,:size => "150x150" %>
+     <%= f.attachment_field :image %>
+    </div>
+  </div>
 
-  <h3>title</h3>
-  <%= f.text_field :title, autofocus: true %>
+  <div class="new_movie_block">
+    <div class="movie_title">
+    <%= f.label :映画タイトル %>
+    <br/>
+      <%= f.text_field :title,class:"movie_title_field" %>
+    </div>
+    <div class="movie_url">
+      <%= f.label :映画url %>
+    <br/>
+      <%= f.text_area :url,class:"movie_url_field" %>
+    </div>
+  </div>
 
-  <h3>price</h3>
-  <%= f.text_field :url %>
+  <div class="new_movie_detail_block">
+    <div class="movie_detail">
+      <%= f.label :映画詳細情報 %>
+    <br/>
+      <%= f.text_area :detail,class:"movie_detail_field" %>
+    </div>
+  </div>
 
-  <h3>price</h3>
-  <%= f.text_field :detail %>
-
-  <% f.submit"編集" %>
+  <%= f.submit"編集",class:"btn btn-warning" %>
 
 <% end %>
