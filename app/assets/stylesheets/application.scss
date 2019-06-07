@@ -75,7 +75,10 @@ small{
     float: left;
     margin-top: 25px;
 }
-
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 
 
