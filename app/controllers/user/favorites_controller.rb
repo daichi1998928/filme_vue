@@ -6,12 +6,7 @@ class User::FavoritesController < ApplicationController
  end
 
  def index
-  @favorites=Favorite.where(user_id:current_user.id).order("created_at ASC") 
-  @favo_products=[]
-  @favorites.each do |favorite|
-   val1=Product.find(favorite.product_id)
-   @favo_products<<[val1]
-  end
+  @favorites=current_user.favorites.order(:created_at).page(params[:page]).per(8)
  end
 
  def create
