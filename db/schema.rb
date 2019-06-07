@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_02_044848) do
+ActiveRecord::Schema.define(version: 2019_06_07_165610) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_06_02_044848) do
   create_table "lp_images", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "image_id", default: 0, null: false
+    t.integer "image_id"
   end
 
   create_table "movie_reviews", force: :cascade do |t|
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2019_06_02_044848) do
   create_table "movies", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_id", null: false
+    t.string "image_id"
     t.string "title", null: false
     t.text "url"
     t.text "detail", null: false

@@ -1,14 +1,18 @@
 class Admin::LpImagesController < ApplicationController
 
   def edit
-    @lp_image = LpImage.find(params[:id])
+    if LpImage.all.empty?
+     @lp_image = LpImage.create
+    else
+     @lp_image = LpImage.find(params[:id])
+    end
   end
 
   def update
   	@lp_image = LpImage.find(params[:id])
-  	if @lp_image.update
+  	if @lp_image.update(lp_images_params)
   	   flash[:notice_m] = "successful update image!!"
-       redirect_to edit_admin_lp_image_path(@lp_image)
+       redirect_to edit_admin_lp_image_path(@lp_image.id)
     else
       render "edit"
     end
