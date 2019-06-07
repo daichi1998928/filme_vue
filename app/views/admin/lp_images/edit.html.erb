@@ -1,17 +1,20 @@
 <h3 class="text-center">lp画像編集</h3>
 <div class="row">
   
-  <div class="col-lg-4 col-lg-offset-5">
+
    <% if flash[:notice_m] %>
     <%= flash[:notice_m] %>
    <% end %>
-    <% unless @lp_image_tag.nil? %>
-      <%= attachment_image_tag @lp_image, :image %>
+   <div class="col-lg-4 col-lg-offset-4 text-center">
+    <% unless @lp_image.nil? %>
+      <%= attachment_image_tag @lp_image, :image,:size => "450x300",class:"text-center" %>
     <% end %>
-
+    
+    <div class="text-left">
     <%= form_for(@lp_image,url:admin_lp_image_path(@lp_image)) do |f| %>
       <%= f.attachment_field :image %>
-      <%= f.submit"編集",class:"btn btn-primary center-block" %>
+      <%= f.submit"編集",class:"btn btn-primary" %>
     <% end %>
+    </div>
   </div>
 </div>

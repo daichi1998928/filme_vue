@@ -10,7 +10,7 @@ class Admin::LpImagesController < ApplicationController
 
   def update
   	@lp_image = LpImage.find(params[:id])
-  	if @lp_image.update(lp_images_params)
+  	if @lp_image.update(images_params)
   	   flash[:notice_m] = "successful update image!!"
        redirect_to edit_admin_lp_image_path(@lp_image.id)
     else
@@ -20,7 +20,7 @@ class Admin::LpImagesController < ApplicationController
   end
 
   private
-  def lp_images_params
+  def images_params
     params.require(:lp_image).permit(:image)
   end
 

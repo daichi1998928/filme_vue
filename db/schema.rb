@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_165610) do
   create_table "lp_images", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "image_id"
+    t.string "image_id"
   end
 
   create_table "movie_reviews", force: :cascade do |t|
