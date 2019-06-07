@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 root to: 'root#top'
   get 'user/products/search', to: 'user/products#search',as: 'search_products'
-  get 'user/thanks', to:'user/user#finish'
+  get 'user/thanks', to:'user/users#finish'
   get 'user/check', to:'user/users#destroy_check'
 
   get 'user/products/thanks', to: 'user/histories#finish', as: 'products_buy'
