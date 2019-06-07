@@ -1,0 +1,18 @@
+
+  <p class="search_count"><%= @search_count %>件の検索結果が出ました。</p>
+  <div class="clearfix">
+    <% @search_products.each do |product| %>
+     <div class="search_product">
+      <%= link_to user_product_path(product) do %>
+       <p><%= attachment_image_tag product, :image, :fill, 200, 200 %></p>
+       <p style="color: black;">商品名:<%= product.product_title %></p>
+      <% end %>
+       <% if product.product_reviews.exists? %>
+         <% product_review_average = product.product_reviews.average(:rate).ceil.to_s %>
+         <% product_review_average_file = 'star' + product_review_average + '.png' %>
+         平均<%= product_review_average %>の評価です
+         <%= image_tag product_review_average_file, :size => '60x20' %>
+       <% end %>
+     </div>
+    <% end %>
+  </div>

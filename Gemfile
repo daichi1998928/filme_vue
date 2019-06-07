@@ -69,4 +69,8 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "cocoon"
 gem "pry-rails"
-
+gem 'kaminari', '~> 0.17.0'
+gem 'pry-byebug'
+gem 'payjp'
+gem 'pry-byebug'
+gem 'dotenv-rails', require: 'dotenv/rails-now'

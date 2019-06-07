@@ -1,2 +1,35 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+
+<% if flash[:notice_m] %>
+    <%= flash[:notice_m] %>
+<% end %>
+
+
+<div class="row">
+  <table class="col-lg-8 col-lg-offset-4">
+       <h1 style="text-align:center;">User一覧</h1>
+         <thead>
+           <tr>
+             <th ></th>
+             <th class="user_name_label">User名</th>
+           </tr>
+         </thead>
+       <% @users.each do |user| %>
+        <div class="user">
+           <tr>
+             <td class="user_image">
+               <%= attachment_image_tag user, :image, :fill, 100, 100%>
+             </td>
+             <td class="user_name"><%= user.name %></td>
+             <td><%= link_to "編集", edit_admin_user_path(user),class: "btn btn-primary user_edit" %></td>
+             <td><%= link_to "削除", admin_user_path(user), method: :delete,class: "btn btn-primary user_delete" %></td>
+
+           </tr>
+         </div>
+
+
+       <% end %>
+     </table>
+     <div class="movie_paginate col-lg-offset-4">
+       <%= paginate @users %>
+     </div>
+</div>

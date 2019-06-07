@@ -1,3 +1,76 @@
 // Place all the styles related to the User::Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.ranking{
+    border:1px solid #000;
+    position: relative;
+    padding: 1em 2em;
+    .title{
+      position: absolute;
+      top:0;
+      transform: translateY(-50%) translateX(4em);
+      background-color: white;
+      padding: 0 1em;
+    }
+    div{
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    .rank-box{
+        margin: 0 auto;
+        width:50%;
+    }
+}
+
+.product-block{
+   width:28%;
+   float:left;
+   margin-right:30px;
+}
+.detail-block,.product-img{
+    div{
+        float:left;
+    }
+    .btn{
+        margin-top:10px;
+    }
+}
+table{
+    margin-top:20px;
+}
+.track-title{
+    border-bottom:3px solid rgb(126, 118, 116);
+    font-size: 20px;
+}
+.disk-num{
+    background:#bfc5c5;
+}
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.related-product{
+    display:inline-block;
+    width:30%;
+    margin-right:5%;
+}
+
+.search_product{
+  width: 250px;
+  float: left;
+}
+.search_count{
+  margin: 10px 0 10px 0;
+}
+
+.review-count{
+    display: inline-block;
+}
+
+.price,.stock{
+    width:100%
+}
+.product-block{
+    margin-bottom: 20px;
+}

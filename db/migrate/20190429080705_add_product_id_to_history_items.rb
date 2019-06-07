@@ -1,7 +1,7 @@
 class AddProductIdToHistoryItems < ActiveRecord::Migration[5.2]
   def up
     add_column :history_items, :product_status , :integer
-    change_column :history_items, :product_status , :integer, :null => false,default: 1
+    change_column :history_items, :product_status , :integer ,default: 1
 
     add_column :history_items, :product_id , :integer
     change_column :history_items, :product_id , :integer, :null => false

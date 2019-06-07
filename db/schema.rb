@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_01_141117) do
+ActiveRecord::Schema.define(version: 2019_06_02_044848) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,13 +30,14 @@ ActiveRecord::Schema.define(version: 2019_05_01_141117) do
     t.datetime "updated_at", null: false
     t.integer "cart_id", null: false
     t.integer "product_id", null: false
-    t.integer "quantity", default: 1, null: false
+    t.integer "quantity", default: 1
   end
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.boolean "juge_use", default: true
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -47,18 +48,19 @@ ActiveRecord::Schema.define(version: 2019_05_01_141117) do
   end
 
   create_table "histories", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.string "shopping_postal_code", null: false
     t.string "shopping_prefecture", null: false
     t.string "shopping_city", null: false
     t.string "shopping_adress", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "history_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_status", default: 1, null: false
+    t.integer "product_status", default: 1
     t.integer "product_id", null: false
     t.integer "product_price", null: false
     t.integer "user_id", null: false
@@ -133,8 +135,8 @@ ActiveRecord::Schema.define(version: 2019_05_01_141117) do
     t.string "city", null: false
     t.string "adress", null: false
     t.string "phone_number", null: false
-    t.string "image_id", default: "google_profile.jpeg"
     t.datetime "deleted_at"
+    t.string "image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

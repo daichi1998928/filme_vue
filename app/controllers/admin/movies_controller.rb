@@ -1,33 +1,46 @@
 class Admin::MoviesController < ApplicationController
   def index
+    @movies = Movie.page(params[:page]).per(4)
   end
 
   def create
-    @new_movie = Movie.new(moview_params)
+    @new_movie = Movie.new(movie_params)
 
     if @new_movie.save
       flash[:movie] = "successful Created Movie!!"
     else
       render :new
-
     end
   end
 
-  def show
-  end
 
   def new
     @new_movie = Movie.new
   end
 
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
   def update
+    @movie = Movie.find(params[:id])
+    @movie.update
+    redirect_to admin_movies_path
   end
 
   def destroy
+    @movie = Movie.find(params[:id])
+    if @movie.delete
+       flash[:notice_m] = "successful Delete Movie!!"
+       redirect_to admin_movies_path
+    else
+       @movies = Movie.all
+       render "index"
+    end
   end
 
   private
-  def moview_params
+  def movie_params
      params.require(:movie).permit(:image,:url,:detail,:title)
   end
 

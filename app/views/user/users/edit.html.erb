@@ -1,19 +1,13 @@
 <div class="row">
-　<div class="col-lg-3">
-    <ul class="sidebar">
-     画像表示
-     <li class="active bg-secondary"><%= link_to "プロフィール編集",edit_user_path(@user) %></li>
-     <li><%= link_to "購入履歴",user_histories_path %></li>
-     <li><%= link_to "お気に入り", favorites_path(@user) %></li>
-     <li><%= link_to "見たことある映画", user_path(@user) %></li>
-　  </ul>
+<%= form_with model:@user do |f|%>
+  <div class="col-lg-3">
+    <%= render 'user/users/sidebar',user:current_user,edit:true,f:f %>
   </div>
 
-  <div class="col-lg-9">
+  <div class="col-lg-7">
     <h2 class="text-center profil-title">公開プロフィール</h2>
-    <h4>基本情報</h4><br />
+    <h4>基本情報</h4><br/>
 
-    <%= form_with model:@user do |f|%>
       <div class="field form-group">
         <%= f.label :読みがな %><br />
         <%= f.text_field :phonetic_name, autofocus: true,autocomplete: "phonetic_name",class:"form-control",placeholder:"ふりがな" %><br />
@@ -43,6 +37,10 @@
         <%= f.text_field :phone_number,autocomplete: "phone_number",class:"form-control" %>
       </div>
 
+      <div class="edit-btn">
+       <%= f.submit "編集",class:"btn btn-primary btn-edit" %><br><br>
+       <%= link_to "退会",user_check_path,class:"btn btn-warning btn-edit" %>
+      </div>
     <% end %>
   </div>
 

@@ -1,3 +1,37 @@
 // Place all the styles related to the Admin::Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.user{
+  margin-bottom: 10px;
+}
+.user_name_label{
+  margin-left: 10px;
+  display: block;
+  font-size: 20px;
+}
+.user_edit{
+  margin-right: 5px;
+  margin-top: 0 !important;
+}
+.user_delete{
+  margin-left: 5px;
+  margin-top: 0 !important;
+}
+.user_image{
+  margin-bottom: 10px;
+}
+.user_name{
+  display: block;
+  margin: 30px 10px 30px 10px;
+  font-size:20px;
+}
+.movie-box{
+  .movie-block{
+    display: inline-block;
+    margin-top:20px;
+    margin-right:25px;
+    width:28%;
+  }
+  margin:0 auto;
+  margin-left: 10%;
+}

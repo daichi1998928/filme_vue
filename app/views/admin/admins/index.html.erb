@@ -1,0 +1,35 @@
+
+<% if flash[:notice_m] %>
+    <%= flash[:notice_m] %>
+<% end %>
+
+
+
+<div class="row">
+  <table class="col-lg-8 col-lg-offset-4">
+       <h1 style="text-align:center;">管理者一覧</h1>
+         <thead>
+           <tr>
+             <th class="admin_name_label">管理者名</th>
+             <th class="admin_email_label">管理者emailアドレス</th>
+           </tr>
+         </thead>
+       <% @admins.each do |admin| %>
+        <div class="admin">
+           <tr>
+             <td class="admin_name">
+               <%= admin.name %>
+             </td>
+             <td class="admin_email"><%= admin.email %></td>
+             <td><%= link_to "削除", admin_path(admin), method: :delete,class: "btn btn-primary admin_delete" %></td>
+
+           </tr>
+         </div>
+
+
+       <% end %>
+     </table>
+     <div class="movie_paginate col-lg-offset-4">
+       <%= paginate @admins %>
+     </div>
+</div>

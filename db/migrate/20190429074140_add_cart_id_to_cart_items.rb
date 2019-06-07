@@ -7,7 +7,7 @@ class AddCartIdToCartItems < ActiveRecord::Migration[5.2]
     change_column :cart_items, :product_id, :integer, :null => false
 
     add_column :cart_items, :quantity, :integer
-    change_column :cart_items, :quantity, :integer, :null => false,default: 1
+    change_column :cart_items, :quantity, :integer ,default: 1
   end
 
   def down

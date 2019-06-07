@@ -1,0 +1,85 @@
+<div class="clearfix">
+    <div class="row row-eq-height ">
+        <div class="product-img col-lg-4 col-lg-offset-1">
+        <%= attachment_image_tag @product, :image,:size => "300x300" %>
+        </div>
+        <div class="detail-block col-lg-7">
+            <h1 class="product-title"><%= @product.product_title %></h1>
+            
+            <% if @product.product_reviews.exists? %>
+             <div class="view-review">
+              <%= image_tag @product_review_average_file, :size => '60x20' %> 
+              <span class="review-count"> / <%= @product.product_reviews.count %> </span>
+             </div> 
+            <% end %>
+
+            <% unless @product.product_reviewed_by?(current_user) %>
+              <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
+                <%= f.label :rate %>
+                <%= f.select :rate, [1,2,3,4,5 ],  :prompt => "選択してください" %>
+                <%= f.submit %>
+              <% end %>
+            <% end %>
+
+
+            <div class="stock">
+             <div>/ 残り<%= @product.stock %></div>
+             <div>/ <%= @product.label_name %></div>
+            </div>
+        
+            <div class="price">¥ <%= @product.price %></div>
+           
+            <div class="btn-box">
+             <% if added_cart?(@product,current_cart.id) %>
+               <%= link_to "カートから外す",user_cart_item_path(id:@product.id, is_show:true),method: :delete,class:"btn btn-success" %>
+             <% else %>
+               <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-default" %>
+             <% end %> 
+
+             <% if @product.favorited_by?(current_user) %>
+              <%= link_to "お気に入りを外す", user_product_favorites_path(@product.id), method: :delete, class:"btn btn-warning" %> 
+             <% else %>
+              <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
+             <% end %>
+            </div>    
+
+        </div>
+    </div>
+
+    <table width="100%" class="tracks">
+      <tr class="track-title">
+        <th>No.</th>
+        <th>タイトル</th>
+        <th>アーティスト</th>
+      </tr>
+
+      <% @traks1.each do |trak| %>
+        <tr>
+          <td><%= trak.track_order %></td>
+          <td><%= trak.track_name %></td>
+          <td><%= trak.artist_name %></td>
+        </tr>
+      <% end %>
+       
+      <% if @traks2.exists? %>
+         <tr><td colspan="3" class="disk-num text-center">Desk2</td></tr>
+      <% @traks2.each do |trak| %>
+        <tr>
+          <td><%= trak.track_order %></td>
+          <td><%= trak.track_name %></td>
+          <td><%= trak.artist_name %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </table>
+
+    <% if @related_product.exists? %>
+      <h3 class="track-title">関連商品</h3>
+      <div class="related-product">
+       <% @related_product.each do |related_product| %>
+          <div><%= attachment_image_tag related_product, :image,:size => "100x100",class:"related-img"%></div><br>
+          <p><% related_product.product_title %></p>
+       <% end %>
+      </div>
+    <% end %>
+</div>

@@ -1,25 +1,49 @@
 class Admin::ProductsController < ApplicationController
+
   def index
+    @products = Product.page(params[:page]).per(4)
   end
+
 
   def create
     @new_cd = Product.new(products_params)
+    if @new_cd.save
+      flash[:cd] = "successful Created CD!!"
+    else
+      render :new
+    end
     @new_cd.save!
   end
 
   def new
     @new_cd = Product.new
-
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update
+    @product = Product.find(params[:id])
+    if @product.update(products_params)
+      flash[:notice_m] = "successful Edit CD"
+    redirect_to admin_products_path
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    if @product.delete
+       flash[:notice_m] = "successful Delete CD!!"
+       redirect_to admin_products_path
+    else
+       @product = Product.all
+       render "index"
+    end
   end
+
 
   private
   def products_params

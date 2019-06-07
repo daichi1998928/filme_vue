@@ -1,0 +1,32 @@
+
+<%= form_with url: search_products_path, method: (:get) , local: true do |f| %>
+        <%= f.text_field :product_title, placeholder: "CDのタイトルを入力してね！" %>
+        <%= submit_tag 'Search' %>
+<% end %>
+
+<div class="row">
+ <div class="col-lg-3 col-lg-offset-1">
+  <div class="ranking">
+    <p class="title">ランキング</p>
+    <% i=0 %>
+    <div class="rank-box">
+      <% @ranks.each do |rank| %>
+        <% product=Product.find(rank[1]) %>
+        <div><%= i+=1 %>位 <%= link_to product.product_title,user_product_path(product.id) %></div>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to " 映画一覧",user_movies_path,class:"btn btn-info glyphicon glyphicon-facetime-video" %>
+</div>
+
+  <div class="col-lg-7 col-lg-offset-1">
+   <% @products.each do |product|%>
+     <div class="product-block">
+       <%= link_to(user_product_path(product.id)) do %>
+        <%= attachment_image_tag product, :image,:size => "200x200" %>
+        <div><%= product.product_title %></div>
+       <% end %>
+     </div>
+   <% end %>
+  </div>
+</div>
