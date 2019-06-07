@@ -3,8 +3,7 @@
     <%= render 'user/users/sidebar',user:current_user,edit:false %>
   </div>
 
-  <div class="col-lg-9">
-
+  <div class="col-lg-8">
       <h2 class="text-center profil-title">見た事ある映画</h2>
     <div class="sns text-right">
       <%= link_to ' ツイート', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank',class:"fab fa-twitter btn btn-info" %>
