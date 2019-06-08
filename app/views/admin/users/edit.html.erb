@@ -2,7 +2,7 @@
 	<h2 class="text-center">User 編集</h2><br>
     
 	<%= form_for (@user) do |f| %>
-	  <div class="row row-eq-height">
+	  <div class="row ">
 		<div class="col-lg-4 col-lg-offset-2">
 			<%= attachment_image_tag @user, :image,:size => "150x150" %>
 			<%= f.attachment_field :image %>
@@ -24,17 +24,26 @@
 		<% @product=Product.find(history_item.id) %>	 
 		<div class="row">
 			<%= form_for(history_item,url:product_status_path(history_item.id)) do |f| %>
+			   <div class="col-lg-3 col-lg-offset-2">
+				<%= attachment_image_tag @product, :image,:size => "200x200" %>
+			   </div>
+			   <div class="col-lg-3">
+				 <div class="title"><%= @product.product_title %></div>
+				 <div class="price">¥ <%= @product.price %></div>
+			   </div>
 				<div class="col-lg-3">
-					<%= attachment_image_tag @product, :image,:size => "300x300" %>
+				  <%= label_tag :status1, "受付済み",class:"status" %>
+				  <%= label_tag :status2, "準備中",class:"status" %>
+				  <%= label_tag :status3, "発送済み",class:"status" %><br>
+
+				  <%= check_box_tag :test1,1,:checked => "checked",class:"status_check" %>
+				  <%= check_box_tag :test2,2,:checked => "checked",class:"status_check" %>
+				  <%= check_box_tag :test3,3,:checked => "checked",class:"status_check" %><br>
+
+				  <%= f.submit "ステータス変更",class:"center-right btn btn-primary" %>
 				</div>
 
-				<div class="col-lg-4">
-					<div><%= @product.product_title %></div>
-					<div>¥ <%= @product.price %></div>
-				</div>
-				<div class="col-lg-3">
-					
-				</div>
+
 			<% end %>
 		</div>
 	<% end %>
