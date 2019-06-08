@@ -14,7 +14,7 @@
             </div>
             <div class="col-lg-5">
               <div class="title"><%= @product.product_title %></div>
-              <div class="price">¥ <%= @product.price %></div>      
+              <div class="price">¥ <%= @product.price %></div>
             </div>
 
 
@@ -23,9 +23,9 @@
               <%= link_to "カートから外す",user_cart_item_path(id:@product.id, is_show:true),method: :delete,class:"btn btn-success" %>
             <% else %>d
               <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-default" %>
-            <% end %> 
+            <% end %>
 
-            <%= link_to "お気に入りを外す", user_product_favorites_path(@product.id), method: :delete, class:"btn btn-warning" %> 
+            <%= link_to "お気に入りを外す", user_product_favorites_path(@product.id), method: :delete, class:"btn btn-warning" %>
           </div>
         <% end %>
         </div>
