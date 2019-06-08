@@ -4,7 +4,7 @@
     
 	<%= form_for (@user) do |f| %>
     <div class="row row-eq-height">
-	  <div class="col-lg-3 col-lg-offset-2">
+	  <div class="col-lg-4 col-lg-offset-2">
 		<%= attachment_image_tag @user, :image,:size => "150x150" %>
 		<%= f.attachment_field :image %>
 	  </div>
@@ -16,9 +16,15 @@
 	  </div> 
 	</div>
 	<% end %>
+	
+	<div class="col-lg-offset-2">
+		<h3 >購入履歴</h3>
+	</div>
 
-	<div class="row">
-	  <h3 >購入履歴</h3>
+	<div class="row row-eq-height">
+	  <div class="col-lg-3 col-lg-offset-2">
+
+	  </div>
 	</div>
 
 </div>
