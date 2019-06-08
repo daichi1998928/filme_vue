@@ -4,7 +4,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
+    @histories=HistoryItem.where(user_id:current_user).order(:created)
   end
 
   def new
@@ -35,7 +36,11 @@ class Admin::UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :encrypted_password,:reset_password_token,:reset_password_sent_at,:remember_created_at ,name:, :phonetic_name, :postal_code, :prefecture, :city, :adress, :phone_number, :image)
+      params.require(:user).permit(:image,:name,:phonetic_name)
+    end
+
+    def product_status_params
+      params.require(:user).permit(:image,:name,:phonetic_name)
     end
 
 end

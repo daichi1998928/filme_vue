@@ -39,12 +39,11 @@
 
           <% end %>
         </div>
-
-        <% if flash[:notice] %>
-          <%= flash[:notice] %>
-        <% end %>
       </div>
     </header>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
 
     <%= yield %>
 
