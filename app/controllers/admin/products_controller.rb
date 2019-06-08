@@ -45,8 +45,8 @@ class Admin::ProductsController < ApplicationController
   end
   
   def change_status
-    @history_item=History.find(:history_item)
-    @history_item.update(product_status:ingredients.length)
+    @history_item=HistoryItem.find(params[:history_item])
+    @history_item.update(product_status:ingredients.length) if ingredients.length != 1
     redirect_to edit_admin_user_path(@history_item.id)
   end
 

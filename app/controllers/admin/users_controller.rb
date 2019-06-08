@@ -39,8 +39,5 @@ class Admin::UsersController < ApplicationController
       params.require(:user).permit(:image,:name,:phonetic_name)
     end
 
-    def product_status_params
-      params.require(:user).permit(:image,:name,:phonetic_name)
-    end
 
 end
