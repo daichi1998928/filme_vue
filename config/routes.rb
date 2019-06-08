@@ -5,6 +5,7 @@ root to: 'root#top'
   get 'user/check', to:'user/users#destroy_check'
 
   get 'user/products/thanks', to: 'user/histories#finish', as: 'products_buy'
+  post 'admin/:hitory_item/status', to:'admin/products#change_status', as:'product_status'
 
   devise_for :admins,controllers:{
     sessions: 'admins/sessions',
