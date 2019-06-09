@@ -32,17 +32,20 @@
 				 <div class="price">¥ <%= @product.price %></div>
 			   </div>
 				<div class="col-lg-3">
-				  <%= label_tag :status1, "受付済み",class:"status" %>
-				  <%= label_tag :status2, "準備中",class:"status" %>
-				  <%= label_tag :status3, "発送済み",class:"status" %><br>
-
-				  <%= check_box_tag :test1,1,:checked => "checked",class:"status_check" %>
-				  <%= check_box_tag :test2,2,class:"status_check" %>
-				  <%= check_box_tag :test3,3,class:"status_check" %><br>
+				  <%= label_tag :product_status, "受付済み",class:"status" %>
+				  <%= label_tag :product_status, "準備中", class:"status" %>
+				  <%= label_tag :product_status, "発送済み",class:"status" %><br>
+				   
+                  <%= f.check_box :status, {:checked => true} %>
+				  <% %w(2 3).each.with_index do |status,i| %>
+					<label>
+					  <%= check_box_tag 'array',status,false,id:"status_#{i}",class:"check"%>
+					</label>
+				  <% end %>
+                  
 
 				  <%= f.submit "ステータス変更",class:"center-right btn btn-primary" %>
 				</div>
-
 
 			<% end %>
 		</div>
