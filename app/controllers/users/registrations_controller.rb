@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-
+  
   # POST /resource
   # def create
   #   super
@@ -25,9 +25,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+    resource.email = DateTime.now.to_s + '@example.com'
+    resource.address = '************'
+    resource.tel = '************'
+    resource.save
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
