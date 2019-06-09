@@ -46,7 +46,7 @@ class Admin::ProductsController < ApplicationController
   
   def change_status
     @history_item=HistoryItem.find(params[:history_item])
-    @history_item.update(product_status: params[:array]) 
+    @history_item.update(product_status: params[:status]) 
     redirect_to edit_admin_user_path(@history_item.id)
   end
 
@@ -56,6 +56,6 @@ class Admin::ProductsController < ApplicationController
   end
   
   def status_params
-    params.require(:history_item).permit(:array)
+    params.require(:history_item).permit(:status)
   end
 end

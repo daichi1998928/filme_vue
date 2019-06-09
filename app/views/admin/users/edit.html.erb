@@ -35,15 +35,20 @@
 				  <%= label_tag :product_status, "受付済み",class:"status" %>
 				  <%= label_tag :product_status, "準備中", class:"status" %>
 				  <%= label_tag :product_status, "発送済み",class:"status" %><br>
-				   
-                  <%= f.check_box :status, {:checked => true} %>
-				  <% %w(2 3).each.with_index do |status,i| %>
-					<label>
-					  <%= check_box_tag 'array',status,false,id:"status_#{i}",class:"check"%>
-					</label>
-				  <% end %>
-                  
 
+				  <%= check_box_tag :status,1,{:checked => true} %>
+				  
+				  <% if history_item.product_status == 1 %>
+					<%= check_box_tag :status, 2 %>
+					<%= check_box_tag :status, 3 %>
+				  <% elsif history_item.product_status == 2 %>
+					<%= check_box_tag :status,2,{:checked => true} %>
+					<%= check_box_tag :status,3 %>
+				  <% elsif history_item.product_status == 3 %>
+				    <%= check_box_tag :status,2,{:checked => true} %>
+                    <%= check_box_tag :status,3,{:checked => true} %>
+				  <% end %>
+				  
 				  <%= f.submit "ステータス変更",class:"center-right btn btn-primary" %>
 				</div>
 
