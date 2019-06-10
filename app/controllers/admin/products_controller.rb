@@ -46,16 +46,14 @@ class Admin::ProductsController < ApplicationController
   
   def change_status
     @history_item=HistoryItem.find(params[:history_item])
-    @history_item.update(product_status: params[:status]) 
+    @history_item.update(product_status: params[:check_flag]) 
     redirect_to edit_admin_user_path(@history_item.id)
   end
 
   private
+
   def products_params
     params.require(:product).permit(:image, :product_title,:price,:label_name,:stock ,tracks_attributes: [:id,:product_id ,:track_name, :artist_name,:disk_num,:track_order, :_destroy])
   end
-  
-  def status_params
-    params.require(:history_item).permit(:status)
-  end
+
 end

@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @history_items=HistoryItem.where(user_id:current_admin.id).order(:created_at)
+    @history_items=HistoryItem.where(user_id:params[:id]).order(:created_at)
   end
 
   def new

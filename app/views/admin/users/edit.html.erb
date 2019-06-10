@@ -37,17 +37,16 @@
 				  <%= label_tag :product_status, "発送済み",class:"status" %><br>
 
 				  <%= check_box_tag :status,1,{:checked => true} %>
-				  
 				  <% if history_item.product_status == 1 %>
-					<%= check_box_tag :status, 2 %>
-					<%= check_box_tag :status, 3 %>
+					<%= check_box_tag :check_flag, 2 %>
+					<%= check_box_tag :check_flag, 3 %>
 				  <% elsif history_item.product_status == 2 %>
-					<%= check_box_tag :status,2,{:checked => true} %>
-					<%= check_box_tag :status,3 %>
+					<%= check_box_tag :check_flag,2,{:checked => true} %>
+					<%= check_box_tag :check_flag,3 %>
 				  <% elsif history_item.product_status == 3 %>
-				    <%= check_box_tag :status,2,{:checked => true} %>
-                    <%= check_box_tag :status,3,{:checked => true} %>
-				  <% end %>
+				    <%= check_box_tag :check_flag,2,{:checked => true} %>
+                    <%= check_box_tag :check_flag,3,{:checked => true} %>
+				  <% end %><br>
 				  
 				  <%= f.submit "ステータス変更",class:"center-right btn btn-primary" %>
 				</div>
