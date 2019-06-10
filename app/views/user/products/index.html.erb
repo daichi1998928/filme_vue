@@ -5,8 +5,8 @@
 <% end %>
 
 <div class="row">
-
-  <div class="col-lg-3 ranking">
+ <div class="col-lg-3 col-lg-offset-1">
+  <div class="ranking">
     <p class="title">ランキング</p>
     <% i=0 %>
     <div class="rank-box">
@@ -16,8 +16,10 @@
       <% end %>
     </div>
   </div>
+  <%= link_to " 映画一覧",user_movies_path,class:"btn btn-info glyphicon glyphicon-facetime-video" %>
+</div>
 
-  <div class="col-lg-8 col-lg-offset-1">
+  <div class="col-lg-7 col-lg-offset-1">
    <% @products.each do |product|%>
      <div class="product-block">
        <%= link_to(user_product_path(product.id)) do %>

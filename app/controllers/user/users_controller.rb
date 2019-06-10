@@ -20,6 +20,7 @@ class User::UsersController < ApplicationController
 
     def show
       @user_id = User.find(params[:id])
+      @movie_reviews=current_user.movie_reviews
     end
 
     def finish

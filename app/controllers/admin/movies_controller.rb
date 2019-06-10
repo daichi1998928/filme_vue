@@ -24,8 +24,12 @@ class Admin::MoviesController < ApplicationController
 
   def update
     @movie = Movie.find(params[:id])
-    @movie.update
-    redirect_to admin_movies_path
+    if @movie.update(movie_params)
+      flash[:notice_m] = "successful Edit movie"
+      redirect_to edit_admin_movie_path(@movie)
+    else
+      render "edit"
+    end
   end
 
   def destroy

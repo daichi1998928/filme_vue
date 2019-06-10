@@ -25,3 +25,27 @@
   margin: 30px 10px 30px 10px;
   font-size:20px;
 }
+.movie-box{
+  .movie-block{
+    display: inline-block;
+    margin-top:20px;
+    margin-right:25px;
+    width:28%;
+  }
+  margin:0 auto;
+  margin-left: 10%;
+}
+input#check_flag{
+  margin: 20px 23% 10px 15px;
+}
+input.center-right.btn.btn-primary{
+  margin-left:63%;
+}
+.status{
+  margin-right:15%;
+}
+
+input[type=checkbox] {
+  transform: scale(3.5);
+  margin-right: 25%;
+}

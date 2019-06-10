@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 root to: 'root#top'
   get 'user/products/search', to: 'user/products#search',as: 'search_products'
-  get 'user/thanks', to:'user/user#finish'
+  get 'user/thanks', to:'user/users#finish'
   get 'user/check', to:'user/users#destroy_check'
 
   get 'user/products/thanks', to: 'user/histories#finish', as: 'products_buy'
+  patch 'admin/:history_item/status', to:'admin/products#change_status', as:'product_status'
 
   devise_for :admins,controllers:{
     sessions: 'admins/sessions',
@@ -24,7 +25,7 @@ root to: 'root#top'
       resources :product_reviews, :only =>[:create]
       resource :favorites, :only => [:create,:destroy]
     end
-    resources :movies do
+    resources :movies,:only => [:index,:show] do
       resource :movie_reviews,:only => [:create]
     end
   end
@@ -32,7 +33,7 @@ root to: 'root#top'
   namespace :admin do
     resources :products,:except => [:show]
     resources :lp_images,:only => [:edit,:update]
-    resources :movies ,:only => [:index,:create,:edit,:new,:destroy]
+    resources :movies ,:only => [:index,:create,:edit,:new,:destroy,:update]
     resources :users, :except =>[:show,:create]
   end
 

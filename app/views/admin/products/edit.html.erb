@@ -1,15 +1,20 @@
-<h1>CD編集</h1>
+<div class="row">
+  <h2 class="text-center profil-title">CD編集</h2>
+  
+  <%= form_for(@product, url: admin_product_path) do |f| %>
+    <div class="col-lg-3 col-lg-offset-1">
+      <%= attachment_image_tag @product, :image,:size => "300x300" %>
+      <%= f.attachment_field :image %>
+    </div>
 
-<%= form_for(@product, url: admin_product_path) do |f| %>
+    <div class="col-lg-6">
+      <h3>title</h3>
+      <%= f.text_field :product_title, autofocus: true,class:"form-control" %>
 
-  <%= f.attachment_field :image %>
+      <h3>price</h3>
+      <%= f.text_field :price,class:"form-control" %>
 
-  <h3>title</h3>
-  <%= f.text_field :product_title, autofocus: true %>
-
-  <h3>price</h3>
-  <%= f.text_field :price %>
-
-  <%= f.submit"編集" %>
-
-<% end %>
+      <%= f.submit"編集",class:"btn btn-warning" %>
+    </div>
+  <% end %>
+</div>
