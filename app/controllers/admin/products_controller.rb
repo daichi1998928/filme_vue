@@ -47,7 +47,7 @@ class Admin::ProductsController < ApplicationController
   def change_status
     @history_item=HistoryItem.find(params[:history_item])
     @history_item.update(product_status: params[:check_flag]) 
-    redirect_to edit_admin_user_path(@history_item.id)
+    redirect_to edit_admin_user_path(@history_item.user_id)
   end
 
   private
