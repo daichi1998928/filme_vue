@@ -72,4 +72,7 @@ gem "pry-rails"
 gem 'kaminari', '~> 0.17.0'
 gem 'pry-byebug'
 gem 'payjp'
+gem 'pry-byebug'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'paranoia', '~> 2.3', '>= 2.3.1'
+

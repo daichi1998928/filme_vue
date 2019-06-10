@@ -19,10 +19,8 @@
     </div>
 
     <header>
-      <div class="top-box clearfix">
-        <%= link_to(user_products_path) do%>
-          <p class="header_title">Filme</p>
-        <% end %>
+     <div class="top-box clearfix">
+      <p class="header_title"><%= link_to "Filme",user_products_path %></p>
         <div class="top-list">
           <% if user_signed_in? %>
               <span><%= link_to "マイページ",edit_user_path(current_user) %></span>
