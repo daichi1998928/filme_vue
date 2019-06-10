@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @histories=HistoryItem.where(user_id:current_user).order(:created)
+    @history_items=HistoryItem.where(user_id:params[:id]).order(:created_at)
   end
 
   def new
@@ -39,8 +39,5 @@ class Admin::UsersController < ApplicationController
       params.require(:user).permit(:image,:name,:phonetic_name)
     end
 
-    def product_status_params
-      params.require(:user).permit(:image,:name,:phonetic_name)
-    end
 
 end
