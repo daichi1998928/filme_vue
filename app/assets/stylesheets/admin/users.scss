@@ -36,8 +36,16 @@
   margin-left: 10%;
 }
 input#check_flag{
-  margin-right: 26%;
+  margin: 20px 23% 10px 15px;
 }
 input.center-right.btn.btn-primary{
   margin-left:63%;
+}
+.status{
+  margin-right:15%;
+}
+
+input[type=checkbox] {
+  transform: scale(3.5);
+  margin-right: 25%;
 }
