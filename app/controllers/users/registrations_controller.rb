@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-  
+
   # POST /resource
   # def create
   #   super
@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def destroy
     super
     resource.email = DateTime.now.to_s + '@example.com'
-    resource.address = '************'
+    resource.adress = '************'
     resource.tel = '************'
     resource.save
   end
