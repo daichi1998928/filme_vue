@@ -12,5 +12,6 @@ class User < ApplicationRecord
   attachment :image
   has_many :favorites
 
+  validates :postal_code,length: { maximum: 7 }    
 
 end
