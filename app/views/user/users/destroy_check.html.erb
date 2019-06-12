@@ -5,6 +5,8 @@
     <%= link_to  user_registration_path , method: :delete  do %>
       <button type="button" class="btn-warning btn-lg">退会する</button>
     <% end %>
-    <button type="button" class="btn-warning btn-lg">退会しない</button>
+    <%= link_to user_products_path do %>
+      <button type="button" class="btn-warning btn-lg">退会しない</button>
+    <% end %>
   </div>
 </div>

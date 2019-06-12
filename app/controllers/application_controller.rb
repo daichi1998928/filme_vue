@@ -30,6 +30,8 @@ class ApplicationController < ActionController::Base
 
 
 
+
+
   def current_cart
     if Cart.find_by(juge_use: true,user_id: current_user).nil?
       @cart=Cart.create(user_id:current_user.id)

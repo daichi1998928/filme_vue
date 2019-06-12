@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :history
   attachment :image
   has_many :favorites
-  validates :email, uniqueness: true
 
 
 end
