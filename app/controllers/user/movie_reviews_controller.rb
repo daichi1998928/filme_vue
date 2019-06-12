@@ -1,5 +1,5 @@
 class User::MovieReviewsController < ApplicationController
-
+  before_action :authenticate_user!
   def create
     movie = Movie.find(params[:movie_id])
     movie_review = MovieReview.new(movie_review_params)

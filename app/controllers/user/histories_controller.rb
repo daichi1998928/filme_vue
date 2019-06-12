@@ -1,4 +1,5 @@
 class User::HistoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :can_buy, only: [:new]
   include User::HistoriesHelper
 
