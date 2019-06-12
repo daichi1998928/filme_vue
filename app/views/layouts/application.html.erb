@@ -6,18 +6,11 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <!-- ページ飛びやすくするために書いてます。後ほど消す -->
-    <div class="container">
-      <p><%= link_to "ログアウト (アプリケーション.htmlに書いている)", destroy_user_session_path, method: :delete %></p>
-      <p><%= link_to "ログイン(アプリケーション.htmlに書いている)",new_user_session_path %></p>
-      <p><%= link_to "新規登録(アプリケーション.htmlに書いている)",new_user_registration_path %></p>
-    </div>
-
     <header>
      <div class="top-box clearfix">
       <p class="header_title"><%= link_to "Filme",user_products_path %></p>
@@ -43,7 +36,6 @@
       <%= flash[:notice] %>
     <% end %>
 
-  
     <%= yield %>
 
     <footer>
