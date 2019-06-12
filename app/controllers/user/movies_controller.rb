@@ -1,5 +1,4 @@
 class User::MoviesController < ApplicationController
-  before_action :authenticate_user!,except:[:index,:show]
 
   def show
     @movie = Movie.find_by(id: params[:id])
@@ -13,12 +12,8 @@ class User::MoviesController < ApplicationController
         @movie_review_average_file = 'star' + @movie_review_average + '.png'
       end
     else
-      redirect_to  user_products_path
+      redirect_to user_products_path
     end
-  end
-
-  def edit
-  	@movie = Movie.find(params[:id])
   end
 
   def index

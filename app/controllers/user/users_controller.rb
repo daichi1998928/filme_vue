@@ -5,6 +5,7 @@ class User::UsersController < ApplicationController
 
     def edit
       @user = current_user
+      redirect_to edit_user_path(@user.id) if @user.id != current_user.id
     end
 
     def update
