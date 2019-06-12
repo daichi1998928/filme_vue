@@ -1,11 +1,21 @@
 <h3 class="text-center">lp画像編集</h3>
 <div class="row">
-  
+  <div class="col-lg-1 col-lg-offset-1">
+    <%= render 'admin/main_sidebar' %>
+  </div>
 
-   <% if flash[:notice_m] %>
-    <%= flash[:notice_m] %>
-   <% end %>
-   <div class="col-lg-4 col-lg-offset-4 text-center">
+  <div class="col-lg-1">
+    <ul class="sidebar">
+      <li><%= link_to "一覧", admins_path %></li>
+      <li><%= link_to "LP画像",edit_admin_lp_image_path(1) %></li>
+      <li><%= link_to "新規追加", new_admin_registration_path %></li>
+    </ul>
+  </div>
+
+   <div class="col-lg-7 col-lg-offset-1 text-center">
+    <% if flash[:notice_m] %>
+     <%= flash[:notice_m] %>
+    <% end %>
     <% unless @lp_image.nil? %>
       <%= attachment_image_tag @lp_image, :image,:size => "450x300",class:"text-center" %>
     <% end %>
