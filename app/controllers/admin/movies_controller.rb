@@ -1,4 +1,6 @@
 class Admin::MoviesController < ApplicationController
+
+  before_action :authenticate_admin!
   def index
     @movies = Movie.page(params[:page]).per(4)
   end
@@ -26,7 +28,7 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
       flash[:notice_m] = "successful Edit movie"
-      redirect_to edit_admin_movie_path(@movie)
+      redirect_to admin_movies_path
     else
       render "edit"
     end

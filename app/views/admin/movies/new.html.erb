@@ -1,5 +1,12 @@
 <div class="row">
-   <div class="col-lg-8 col-lg-offset-2">
+
+    <div class="col-lg-1">
+     <%= render 'admin/main_sidebar' %>
+    </div>
+    <div class="col-lg-1">
+      <%= render 'admin/movie' %>
+    </div>
+   <div class="col-lg-7 col-lg-offset-1">
      <h1 >映画新規登録</h1>
       <% if @new_movie.errors.any? %>
         <% @new_movie.errors.full_messages.each do |msg| %>
