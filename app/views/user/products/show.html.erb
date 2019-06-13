@@ -12,12 +12,14 @@
               <span class="review-count"> / <%= @product.product_reviews.count %> </span>
              </div> 
             <% end %>
-
-            <% unless @product.product_reviewed_by?(current_user) %>
-              <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
-                <%= f.label :rate %>
-                <%= f.select :rate, [1,2,3,4,5 ],  :prompt => "選択してください" %>
-                <%= f.submit %>
+            
+            <% unless current_user.nil? %>
+              <% unless @product.product_reviewed_by?(current_user) %>
+                <%= form_for [@product,@new_product_review],url: user_product_product_reviews_path(@product) do |f| %>
+                  <%= f.label :rate %>
+                  <%= f.select :rate, [1,2,3,4,5 ],  :prompt => "選択してください" %>
+                  <%= f.submit %>
+                <% end %>
               <% end %>
             <% end %>
 
@@ -30,17 +32,19 @@
             <div class="price">¥ <%= @product.price %></div>
            
             <div class="btn-box">
-             <% if added_cart?(@product,current_cart.id) %>
-               <%= link_to "カートから外す",user_cart_item_path(id:@product.id, is_show:true),method: :delete,class:"btn btn-success" %>
-             <% else %>
-               <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-default" %>
-             <% end %> 
+              <% unless current_user.nil? %>
+                <% if added_cart?(@product,current_cart.id) %>
+                  <%= link_to "カートから外す",user_cart_item_path(id:@product.id, is_show:true),method: :delete,class:"btn btn-success" %>
+                <% else %>
+                  <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-default" %>
+                <% end %> 
 
-             <% if @product.favorited_by?(current_user) %>
-              <%= link_to "お気に入りを外す", user_product_favorites_path(@product.id), method: :delete, class:"btn btn-warning" %> 
-             <% else %>
-              <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
-             <% end %>
+                <% if @product.favorited_by?(current_user) %>
+                  <%= link_to "お気に入りを外す", user_product_favorites_path(@product.id), method: :delete, class:"btn btn-warning" %> 
+                <% else %>
+                  <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
+                <% end %>
+              <% end %>
             </div>    
 
         </div>

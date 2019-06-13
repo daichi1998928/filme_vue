@@ -1,9 +1,5 @@
 class User::FavoritesController < ApplicationController
- def like
- end
-
- def unlike
- end
+ before_action :authenticate_user!,except:[:index]
 
  def index
   @favorites = current_user.favorites.order(:created_at).page(params[:page]).per(16)

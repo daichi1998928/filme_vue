@@ -1,7 +1,9 @@
 class User::CartItemsController < ApplicationController
-	
+	before_action :authenticate_user!
+
 	def show
-        @cart_items = CartItem.where(cart_id: current_cart)
+		@cart_items = CartItem.where(cart_id: current_cart)
+		redirect_to user_cart_item_path(current_cart) if Cart.find(params[:id]).user_id != current_user.id
 	end
 	
 	def create

@@ -1,6 +1,6 @@
 class User::ProductReviewsController < ApplicationController
-
-
+  before_action :authenticate_user!
+  
   def create
     product = Product.find(params[:product_id])
     product_review = ProductReview.new(product_review_params)
