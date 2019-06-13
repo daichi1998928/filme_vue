@@ -1,4 +1,6 @@
 class Admin::AdminsController < ApplicationController
+
+  before_action :authenticate_admin!
   def index
     @admins = Admin.page(params[:page]).per(4)
   end
@@ -8,7 +10,7 @@ class Admin::AdminsController < ApplicationController
   	@admin = Admin.find(params[:id])
   	if @admin.destroy
       flash[:notice_m] = "successful Delete AdminUser!!"
-      redirect_to admin_users
+      redirect_to admins_path
     else
       @admins = Admin.all
       render "index"

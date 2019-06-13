@@ -1,5 +1,5 @@
 class Admin::LpImagesController < ApplicationController
-
+  before_action :authenticate_admin!
   def edit
     if LpImage.all.empty?
      @lp_image = LpImage.create
@@ -12,7 +12,7 @@ class Admin::LpImagesController < ApplicationController
   	@lp_image = LpImage.find(params[:id])
   	if @lp_image.update(images_params)
   	   flash[:notice_m] = "successful update image!!"
-       redirect_to edit_admin_lp_image_path(@lp_image.id)
+       redirect_to admin_products_path
     else
       render "edit"
     end

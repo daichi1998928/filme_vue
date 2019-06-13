@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+
+  before_action :authenticate_admin!
   def index
     @users = User.page(params[:page]).per(10)
   end
@@ -15,7 +17,7 @@ class Admin::UsersController < ApplicationController
   	@user = User.find(params[:id])
   	if @user.update(user_params)
        flash[:notice_m] = "successful Update User!!"
-       redirect_to edit_admin_user_path(@user)
+       redirect_to admin_users_path
     else
        @users = User.all
        render "index"
@@ -26,7 +28,7 @@ class Admin::UsersController < ApplicationController
   	@user = User.find(params[:id])
   	if @user.destroy
        flash[:notice_m] = "successful Delete User!!"
-       redirect_to edit_admin_user_path(@user)
+       redirect_to admin_users_path
     else
        @users = User.all
        render "index"

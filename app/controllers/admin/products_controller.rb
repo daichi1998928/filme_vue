@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-
+  before_action :authenticate_admin!
   def index
     @products = Product.page(params[:page]).per(4)
   end
@@ -43,10 +43,10 @@ class Admin::ProductsController < ApplicationController
        render "index"
     end
   end
-  
+
   def change_status
     @history_item=HistoryItem.find(params[:history_item])
-    @history_item.update(product_status: params[:check_flag]) 
+    @history_item.update(product_status: params[:check_flag])
     redirect_to edit_admin_user_path(@history_item.user_id)
   end
 
