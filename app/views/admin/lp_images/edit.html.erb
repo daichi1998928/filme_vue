@@ -8,7 +8,6 @@
     <ul class="sidebar">
       <li><%= link_to "一覧", admins_path %></li>
       <li><%= link_to "LP画像",edit_admin_lp_image_path(1) %></li>
-      <li><%= link_to "新規追加", new_admin_registration_path %></li>
     </ul>
   </div>
 
@@ -19,7 +18,7 @@
     <% unless @lp_image.nil? %>
       <%= attachment_image_tag @lp_image, :image,:size => "450x300",class:"text-center" %>
     <% end %>
-    
+
     <div class="text-left">
     <%= form_for(@lp_image,url:admin_lp_image_path(@lp_image)) do |f| %>
       <%= f.attachment_field :image %>
