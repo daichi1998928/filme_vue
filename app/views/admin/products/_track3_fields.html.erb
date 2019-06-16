@@ -1,0 +1,23 @@
+<div class="product_border">
+    <div class="nested-fields">
+      <div class="">
+          <%= f.label :track_order %>
+          <%= f.number_field :track_order,style: "margin-left:10px;" %>
+      </div>
+      <div class="">
+        <%= f.label :track_name %>
+        <%= f.text_field :track_name,class: "long_form" %>
+      </div>
+      <div class="">
+        <%= f.label :artist_name %>
+        <%= f.text_field :artist_name,class: "long_form" %>
+      </div>
+      <div class="">
+        <%= f.label :disk_number %>
+        <%= f.number_field :disk_num %>
+      </div>
+    　
+      <%= f.hidden_field :id, value: f.object.id %>
+      <%= link_to_remove_association "曲を削除", f %>
+    </div>
+</div>

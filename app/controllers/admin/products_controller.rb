@@ -26,7 +26,6 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(update_products_params)
-      binding.pry
       flash[:notice_m] = "successful Edit CD"
       redirect_to admin_products_path
     else

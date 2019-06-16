@@ -25,31 +25,16 @@
 
           <%= f.submit"編集",class:"btn btn-warning" %>
 
-          <div>
-            <p style="font-size: 20px;">Disk1</p>
-
-
-              <%= f.fields_for :tracks do |track1| %>
-                <%= render 'track_fields', f: track1 %>
-              <% end %>
-
-              <div class="links">
-                <%= link_to_add_association 'Disk1の曲を追加', f, :tracks %>
-              </div>
-
-
-          <div>
-            <p style="font-size: 20px;">Disk2</p>
-
-
-              <%= f.fields_for :tracks do |track2| %>
-                <%= render 'track2_fields', f: track2 %>
-              <% end %>
+          <div >
+            <%= f.fields_for :tracks do |track| %>
+              <%= render 'track3_fields', f: track %>
+            <% end %>
 
             <div class="links">
-              <%= link_to_add_association 'Disk2の曲を追加', f, :tracks,partial: 'track2_fields' %>
+               <%= link_to_add_association 'Diskの曲を追加', f, :tracks, partial: 'track3_fields' %>
             </div>
           </div>
+
       <% end %>
     </div>
   </div>
