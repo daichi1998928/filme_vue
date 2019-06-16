@@ -5,7 +5,17 @@
 
 
 <div class="row">
-  <table class="col-lg-8 col-lg-offset-4">
+
+  <div class="col-lg-1">
+   <%= render 'admin/main_sidebar' %>
+  </div>
+  <div class="col-lg-1">
+    <ul class="sidebar">
+     <li><%= link_to "一覧", admin_users_path %></li>
+    </ul>
+  </div>
+
+  <table class="col-lg-7 col-lg-offset-1">
        <h1 style="text-align:center;">User一覧</h1>
          <thead>
            <tr>
@@ -21,7 +31,7 @@
              </td>
              <td class="user_name"><%= user.name %></td>
              <td><%= link_to "編集", edit_admin_user_path(user),class: "btn btn-primary user_edit" %></td>
-             <td><%= link_to "削除", admin_user_path(user), method: :delete,class: "btn btn-primary user_delete" %></td>
+             <td><%= link_to "削除",  admin_user_path(user), method: :delete,class: "btn btn-primary user_delete" %></td>
 
            </tr>
          </div>

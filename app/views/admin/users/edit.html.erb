@@ -1,16 +1,60 @@
-<h1>User 編集</h1>
+<div class="row">
+	<h2 class="text-center">User 編集</h2><br>
+    
+	<%= form_for(@user,url:admin_user_path(@user.id)) do |f| %>
+	  <div class="row">
+			<div class="col-lg-4 col-lg-offset-2">
+				<%= attachment_image_tag @user, :image,:size => "150x150" %>
+				<%= f.attachment_field :image %>
+			</div>
+			
+			<div class="col-lg-5 text-right">
+				<%= f.text_field :name,class:"form-control" %><br>
+				<%= f.text_field :phonetic_name,class:"form-control" %>
+				<%= f.submit"編集",class:"btn btn-warning" %>
+			</div> 
+	  </div>
+	<% end %>
+	
+	<div class="col-lg-offset-2">
+		<h3 >購入履歴</h3>
+	</div>
 
-<%= form_for (@user) do |f| %>
+	<% @history_items.each do |history_item| %>
+		<% @product=Product.find(history_item.id) %>	 
+		<div class="row">
+			<%= form_for(history_item,url:product_status_path(history_item.id)) do |f| %>
+			   <div class="col-lg-3 col-lg-offset-2">
+				<%= attachment_image_tag @product, :image,:size => "200x200" %>
+			   </div>
+			   <div class="col-lg-3">
+				 <div class="title"><%= @product.product_title %></div>
+				 <div class="price">¥ <%= @product.price %></div>
+			   </div>
+				<div class="col-lg-3 check">
+				  <%= label_tag :product_status, "受付済み",class:"status" %>
+				  <%= label_tag :product_status, "準備中", class:"status" %>
+				  <%= label_tag :product_status, "発送済み",class:"status" %><br>
 
-	<h2>画像</h2>
-	<%= f.attachment_field :image %>
-	<h2>Name</h2>
-		<%= f.text_field :name,placeholder:"名前" %>
+				  <%= check_box_tag :check_flag,1,{:checked => true} %>
+				  <% if history_item.product_status == 1 %>
+					<%= check_box_tag :check_flag, 2 %>
+					<%= check_box_tag :check_flag, 3 %>
+				  <% elsif history_item.product_status == 2 %>
+					<%= check_box_tag :check_flag,2,{:checked => true} %>
+					<%= check_box_tag :check_flag,3 %>
+				  <% elsif history_item.product_status == 3 %>
+				    <%= check_box_tag :check_flag,2,{:checked => true} %>
+                    <%= check_box_tag :check_flag,3,{:checked => true} %>
+				  <% end %><br>
+				  
+				  <%= f.submit "ステータス変更",class:"center-right btn btn-primary" %>
+				</div>
 
-		<%= f.submit"編集" %>
+			<% end %>
+		</div>
+	<% end %>
 
-<% end %>
-
-<h3>購入履歴</h3>
-
+    <div class="text-center"><%= paginate @history_items %></div>
+</div>
 

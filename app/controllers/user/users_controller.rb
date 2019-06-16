@@ -1,10 +1,11 @@
 class User::UsersController < ApplicationController
-
+    before_action :authenticate_user!,except:[:show]
     def destroy_check
     end
 
     def edit
-      @user = current_user
+      @user = User.find(params[:id])
+      redirect_to edit_user_path(current_user.id) if @user.id != current_user.id
     end
 
     def update

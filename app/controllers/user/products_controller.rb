@@ -18,11 +18,6 @@ class User::ProductsController < ApplicationController
     @products=Product.where("stock > ?",0)
   end
 
-  def create
- 
-  end
-
-
   def show
     @product = Product.find(params[:id])
     @traks1=Track.where(product_id:@product.id).where(disk_num:1).order(:track_order)

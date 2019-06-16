@@ -2,7 +2,11 @@
   <h3 class="text-center">退会確認</h3><br />
   <%= image_tag("note.png",:size => "550x550",class:"center-block") %><br/><br/>
   <div class="botton text-center">
-    <button type="button" class="btn-warning btn-lg">退会する</button>
-    <button type="button" class="btn-warning btn-lg">退会しない</button>
+    <%= link_to  user_registration_path , method: :delete  do %>
+      <button type="button" class="btn-warning btn-lg">退会する</button>
+    <% end %>
+    <%= link_to user_products_path do %>
+      <button type="button" class="btn-warning btn-lg">退会しない</button>
+    <% end %>
   </div>
 </div>

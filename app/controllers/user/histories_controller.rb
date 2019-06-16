@@ -1,8 +1,13 @@
 class User::HistoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :can_buy, only: [:new]
   include User::HistoriesHelper
 
     def finish
+    end
+
+    def index 
+      @history_items=HistoryItem.where(user_id:current_user.id).order(:created_at).page(params[:page]).per(8)
     end
 
     def new
