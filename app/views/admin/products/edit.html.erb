@@ -4,12 +4,12 @@
       <%= render 'admin/main_sidebar' %>
    </div>
    <div class="col-lg-1">
-     <%= render 'admin/product',index: admin_products_path,new: new_admin_product_path %> 
+     <%= render 'admin/product',index: admin_products_path,new: new_admin_product_path %>
    </div>
 
    <div class="col-lg-7 col-lg-offset-1">
       <h2 class="text-center profil-title">CD編集</h2>
-  
+
       <%= form_for(@product, url: admin_product_path) do |f| %>
         <div class="col-lg-4">
           <%= attachment_image_tag @product, :image,:size => "100x100" %>
@@ -28,27 +28,23 @@
           <div>
             <p style="font-size: 20px;">Disk1</p>
 
-            <% @track1=Track.where(product_id:@product.id,disk_num:1) %>
-            <% @track1.each do |track1| %>
-              <%= f.fields_for track1 do |track| %>
-              <%= render 'track_fields', f: track %>
+
+              <%= f.fields_for :tracks do |track1| %>
+                <%= render 'track_fields', f: track1 %>
               <% end %>
-            <% end %>
 
               <div class="links">
                 <%= link_to_add_association 'Disk1の曲を追加', f, :tracks %>
               </div>
-         
-            
+
+
           <div>
             <p style="font-size: 20px;">Disk2</p>
 
-            <% @track2=Track.where(product_id:@product.id,disk_num:2) %>
-            <% @track2.each do |track2| %>
-              <%= f.fields_for track2 do |track| %>
-              <%= render 'track2_fields', f: track %>
+
+              <%= f.fields_for :tracks do |track2| %>
+                <%= render 'track2_fields', f: track2 %>
               <% end %>
-            <% end %>        
 
             <div class="links">
               <%= link_to_add_association 'Disk2の曲を追加', f, :tracks,partial: 'track2_fields' %>
