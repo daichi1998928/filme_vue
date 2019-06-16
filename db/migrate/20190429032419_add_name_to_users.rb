@@ -22,7 +22,7 @@ class AddNameToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :phone_number, :string
     change_column :users, :phone_number, :string, :null => false
 
-    add_column :users, :image_id, :string,default: "google_profile.jpeg"
+    add_column :users, :image_id, :string,default: "/images/google_profile.jpeg"
 
     add_column :users, :deleted_at, :datetime
 
