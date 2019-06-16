@@ -13,21 +13,34 @@
   <body>
     <header>
      <div class="top-box clearfix">
-      <p class="header_title"><%= link_to "Filme",user_products_path %></p>
-        <div class="top-list">
+
+        <p class="header_title"><%= link_to "Filme",user_products_path %></p>
+        <div class="search">
+          <%= form_with url: search_products_path, method: (:get) , local: true do |f| %>
+            <%= f.text_field :product_title, placeholder: "CDのタイトルを入力してね！" %>
+            <%= button_tag :type => "submit" do %>
+              <i class="fa fa-search"></i>検索
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="top-list nav navbar-nav">
           <% if user_signed_in? %>
-              <span><%= link_to "マイページ",edit_user_path(current_user) %></span>
+              <li><%= link_to "マイページ",edit_user_path(current_user) %></li>
 
-              <span class="top-list_item"><%= link_to "カートの中身",user_cart_item_path(current_cart) %></span>
+              <li class="top-list_item"><%= link_to "カートの中身",user_cart_item_path(current_cart) %></li>
 
-              <span class="top-list_item"><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></span>
+              <li class="top-list_item"><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></li>
 
           <% elsif admin_signed_in? %>
 
-              <span><%= link_to "ログアウト",  destroy_admin_session_path, method: :delete %></span>
-
+              <li><%= link_to "ログアウト",  destroy_admin_session_path, method: :delete %></li>
+          <% else %>
+              <li><%= link_to ' サインアップ', new_user_registration_path %></li>
+              <li><%= link_to ' ログイン', new_user_session_path %></li>
           <% end %>
         </div>
+
       </div>
     </header>
     <% if flash[:notice] %>
