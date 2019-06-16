@@ -14,6 +14,7 @@
   <div class="">
   <%= f.hidden_field :disk_num, :value => 2 %>
   </div>
-
+  
+  <%= f.hidden_field :id, value: f.object.id %>
   <%= link_to_remove_association "曲を削除", f %>
 </div>
