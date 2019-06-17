@@ -25,7 +25,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product.update(update_products_params)
+    if @product.update(products_params)
       flash[:notice_m] = "successful Edit CD"
       redirect_to admin_products_path
     else
@@ -53,10 +53,6 @@ class Admin::ProductsController < ApplicationController
   private
 
   def products_params
-    params.require(:product).permit(:image, :product_title,:price,:label_name,:stock ,tracks_attributes: [:id,:product_id ,:track_name, :artist_name,:disk_num,:track_order, :_destroy])
-  end
-
-  def update_products_params
     params.require(:product).permit(:image, :product_title,:price,:label_name,:stock ,tracks_attributes: [:id,:product_id ,:track_name, :artist_name,:disk_num,:track_order, :_destroy])
   end
 end
