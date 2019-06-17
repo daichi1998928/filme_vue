@@ -1,0 +1,9 @@
+<h3>lp_images edit</h3>
+
+<% if flash[:notice_m] %>
+    <%= flash[:notice_m] %>
+<% end %>
+
+<%= attachment_image_tag @lp_image, :image,fallback: "/images/finish.jpeg"%>
+
+<% f.submit"編集" %>

@@ -1,5 +1,5 @@
    <ul class="sidebar">
-    <div class="profile-icon"><%= attachment_image_tag user,:image,format:'jpeg',fallback:"no_image.png" %></div>
+    <div class="profile-icon"><%= attachment_image_tag user,:image,format:'jpeg',fallback:"/images/no_image.png" %></div>
     <% if edit %>
       <%= f.attachment_field :image %>
     <% end %>
