@@ -16,7 +16,7 @@
         <%= f.text_field :shopping_postal_code,class:"form-control", :value => "#{current_user.postal_code}" %>
       </div>
 
-      <h4 class="card-info">クレジット決済</h4>
+      <h4 class="card-info">決済方法</h4>
 
    
       <script
@@ -26,10 +26,11 @@
         data-key= 'pk_test_364c1013942fc019fd2d6b25' 
         data-key=<%= ENV["PUBLIC_KEY"] %>
         data-on-created="onCreated"
-        data-text="支払う"
+        data-text="クレジットで支払う"
         data-submit-text="支払う"
         ></script>
-   
+      
+      <%= link_to '代引き',user_cash_deliver_path, class:"btn btn-primary",method: :post %>
     <% end %>
    </div>
    

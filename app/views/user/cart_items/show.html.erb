@@ -33,7 +33,8 @@
 
   <div class="col-lg-4">
     <div class="sum-box">
-      <h2>合計<%= sum %></h2>
+      <% sum*=1.08 %>
+      <h2>合計<%= sum.round %>(税込)</h2>
       <%= link_to "購入",new_user_history_path(total:sum),class:"btn btn-warning" %>
     </div>
   </div>
