@@ -1,9 +1,8 @@
 class User::HistoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :can_buy, only: [:new]
-  before_action :calc_sum,only: [:create]
+  
   include User::HistoriesHelper
-  require "cart_item.rb"
 
     def finish
     end
@@ -18,9 +17,10 @@ class User::HistoriesController < ApplicationController
     end
 
     def cash_deliver
-      @history=History.new(history_params)
+      @history=History.new
       @history.user_id = current_user.id
       @history.pay_method=2
+      @history
       @history.save
 
       current_cart.cart_items.each do |cart_item|
@@ -45,7 +45,7 @@ class User::HistoriesController < ApplicationController
       @history.save
       Payjp.api_key = ENV['SECRET_KEY']
         Payjp::Charge.create(
-          amount: calc_sum, # 決済する値段
+          amount: sum, # 決済する値段
           card: params['payjp-token'],
           currency: 'jpy'
         )

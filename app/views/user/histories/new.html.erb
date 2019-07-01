@@ -23,15 +23,13 @@
         type="text/javascript"
         src="https://checkout.pay.jp/"
         class="payjp-button"
-        data-key= 'pk_test_364c1013942fc019fd2d6b25' 
-        data-key=<%= ENV["PUBLIC_KEY"] %>
+        data-key='pk_test_364c1013942fc019fd2d6b25'%>
         data-on-created="onCreated"
         data-text="クレジットで支払う"
         data-submit-text="支払う"
         ></script>
-      
-      <%= link_to '代引き',user_cash_deliver_path, class:"btn btn-primary",method: :post %>
-    <% end %>
+        
+        <% end %>
    </div>
    
 </div>
