@@ -20,8 +20,12 @@
       <div class="field form-group">
         <%= f.text_field :postal_code,class:"form-control", :value => "#{submit.postal_code}" %>
       </div>
-      
-      <%= f.submit "住所追加",class:"btn btn-primary" %>
+
+      <% if History.find_by(juge_use: true,user_id: current_user).nil? %>
+        <%= f.submit "配送住所確定",class:"btn btn-primary" %>
+      <% else %>
+        <%= f.submit "配送住所変更",class:"btn btn-warning" %>
+        <% end %>
     <% end %>
 
     <h4 class="card-info">決済方法</h4>

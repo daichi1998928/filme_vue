@@ -37,13 +37,4 @@ class ApplicationController < ActionController::Base
       @cart = Cart.find_by(juge_use: true,user_id: current_user)
     end
   end
-
-  def current_history
-     if History.find_by(juge_use: true,user_id: current_user).nil?
-       @History=History.create(user_id:current_user.id)
-     else
-       @History=History.find_by(juge_use: true, user_id:current_user)
-     end
-  end
-
 end

@@ -1,10 +1,14 @@
 class User::HistoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :can_buy, only: [:new]
+  before_action :address_entry?,only: [:create,:cash_deliver]
   
   include User::HistoriesHelper
-
-    def finish
+    
+    def address_entry?
+      if History.find_by(juge_use: true,user_id: current_user).nil?
+        redirect_to new_user_history_path,notice: "住所を確定してください"
+      end
     end
   
     def index 
@@ -28,7 +32,7 @@ class User::HistoriesController < ApplicationController
     end
 
     def cash_deliver
-      history=current_history
+      history=History.find_by(juge_use: true, user_id:current_user)
       history.pay_method=2
       history.save
 
@@ -49,7 +53,7 @@ class User::HistoriesController < ApplicationController
     end
 
     def create
-      history=current_history
+      history=History.find_by(juge_use: true, user_id:current_user)
       history.pay_method=1 
       history.save
       Payjp.api_key = ENV['SECRET_KEY']
