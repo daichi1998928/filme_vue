@@ -12,9 +12,15 @@ class User::HistoriesController < ApplicationController
     end
 
     def add_address
-      @History=current_history
-      @hisory.update(history_params)
-      redirect_to new_user_history_path,notice: "住所追加success"
+      if History.find_by(juge_use: true,user_id: current_user).nil?
+         @history=History.new(history_params)
+         @history.user_id = current_user.id
+         @history.save
+      else
+        @history=History.find_by(juge_use: true, user_id: current_user.id)
+        flash[:notice] = @history.update(history_params) ? "update成功" : "update失敗"
+      end
+      render :new
     end
 
     def new
@@ -38,7 +44,7 @@ class User::HistoriesController < ApplicationController
       end
 
       current_cart.update(juge_use:false)
-      history.uodate(juge_use:false)
+      history.update(juge_use:false)
       @cart=Cart.create(user_id:current_user.id)
       redirect_to products_buy_path, notice: "支払いが完了しました"
     end
@@ -64,7 +70,7 @@ class User::HistoriesController < ApplicationController
           @product.update(stock:@product.stock-cart_item.quantity)
         end
         current_cart.update(juge_use:false)
-        history.uodate(juge_use:false)
+        history.update(juge_use:false)
         @cart=Cart.create(user_id:current_user.id)
         redirect_to products_buy_path, notice: "支払いが完了しました"
     end

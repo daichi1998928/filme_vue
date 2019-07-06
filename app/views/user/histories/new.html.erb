@@ -1,7 +1,12 @@
 <div class="row">
    <h2 class="text-center profil-title">購入情報</h2>
    <div class="col-lg-8 col-lg-offset-2">
-    <%= form_for [@history,url: user_add_address_path] do |f| %>
+    <% if History.find_by(juge_use: true,user_id: current_user).nil? %>
+      <% submit = current_user %>
+    <% else %>
+      <% submit = @history %>
+    <% end %> 
+    <%= form_for @history,url: user_add_address_path, html: {method: 'PATCH'} do |f| %>
       <h4>お届け住所</h4>
       <div class="field form-group">
        <%= f.text_field :shopping_prefecture,class:"form-control", :value => "#{current_user.prefecture}" %>
@@ -15,12 +20,12 @@
       <div class="field form-group">
         <%= f.text_field :shopping_postal_code,class:"form-control", :value => "#{current_user.postal_code}" %>
       </div>
-
+      
       <%= f.submit "住所追加",class:"btn btn-primary" %>
     <% end %>
 
     <h4 class="card-info">決済方法</h4>
-    <%= form_for [:user,@history] do |f| %>
+    <%= form_tag(action: :create, method: :post) do %>
       <script
         type="text/javascript"
         src="https://checkout.pay.jp/"
@@ -32,7 +37,6 @@
         ></script>
      <% end %>
 
-     <%= link_to "代引き",cash_deliver_path,method: :post, class:"btn btn-primary" %>
+     <%= link_to "代引き", user_cash_deliver_path,method: :post, class:"btn btn-primary" %>
    </div>
-   
 </div>

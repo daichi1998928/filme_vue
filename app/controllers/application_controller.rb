@@ -39,10 +39,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_history
-     if Histories.find_by(juge_use: true,user_id: current_user).nil?
-       @History=Histories.create(user_id:current_user.id)
+     if History.find_by(juge_use: true,user_id: current_user).nil?
+       @History=History.create(user_id:current_user.id)
      else
-       @History=Histories.find_by(juge_use: true, user_id:current_user)
+       @History=History.find_by(juge_use: true, user_id:current_user)
      end
   end
 

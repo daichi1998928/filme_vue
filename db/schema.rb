@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 2019_07_06_112430) do
 
   create_table "histories", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "shopping_postal_code", null: false
-    t.string "shopping_prefecture", null: false
-    t.string "shopping_city", null: false
-    t.string "shopping_adress", null: false
+    t.string "shopping_postal_code"
+    t.string "shopping_prefecture"
+    t.string "shopping_city"
+    t.string "shopping_adress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "pay_method"
