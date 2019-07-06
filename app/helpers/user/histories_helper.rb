@@ -5,6 +5,6 @@ module User::HistoriesHelper
         cart_items.each do |item|
          sum+=item.quantity*Product.find(item.product_id).price
         end
-        sum*1.08.round
+        (sum*1.08).round
     end
 end
