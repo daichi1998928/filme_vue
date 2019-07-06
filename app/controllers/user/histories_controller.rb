@@ -20,11 +20,10 @@ class User::HistoriesController < ApplicationController
         @history=History.find_by(juge_use: true, user_id: current_user.id)
         flash[:notice] = @history.update(history_params) ? "update成功" : "update失敗"
       end
-      render :new
+      redirect_to new_user_history_path
     end
 
     def new
-      @user=current_user
       @history=History.new
     end
 
@@ -87,7 +86,7 @@ class User::HistoriesController < ApplicationController
     private
 
     def history_params
-      params.require(:history).permit(:shopping_prefecture, :shopping_city, :shopping_adress, :shopping_postal_code)
+      params.require(:history).permit(:prefecture, :city, :adress, :postal_code)
     end
 
 end
