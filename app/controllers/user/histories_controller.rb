@@ -11,6 +11,10 @@ class User::HistoriesController < ApplicationController
       @history_items=HistoryItem.where(user_id:current_user.id).order(:created_at).page(params[:page]).per(8)
     end
 
+    def add_address
+      
+    end
+
     def new
       @user=current_user
       @history=History.new

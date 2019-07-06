@@ -18,7 +18,7 @@
 
       <h4 class="card-info">決済方法</h4>
 
-   
+    <%= form_for [:user,@history] do |f| %>
       <script
         type="text/javascript"
         src="https://checkout.pay.jp/"
@@ -28,7 +28,6 @@
         data-text="クレジットで支払う"
         data-submit-text="支払う"
         ></script>
-
       <% end %>
    </div>
    
