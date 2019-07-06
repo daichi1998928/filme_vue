@@ -12,7 +12,9 @@ class User::HistoriesController < ApplicationController
     end
 
     def add_address
-      
+      @History=current_history
+      @hisory.update(history_params)
+      redirect_to new_user_history_path,notice: "住所追加success"
     end
 
     def new
@@ -21,14 +23,12 @@ class User::HistoriesController < ApplicationController
     end
 
     def cash_deliver
-      @history=History.new
-      @history.user_id = current_user.id
-      @history.pay_method=2
-      @history
-      @history.save
+      history=current_history
+      history.pay_method=2
+      history.save
 
       current_cart.cart_items.each do |cart_item|
-        @history.history_items.create(product_id: cart_item.product_id,
+        history.history_items.create(product_id: cart_item.product_id,
                                       product_price: Product.find(cart_item.product_id).price,
                                       quantity: cart_item.quantity,
                                       user_id:current_user.id
@@ -38,15 +38,15 @@ class User::HistoriesController < ApplicationController
       end
 
       current_cart.update(juge_use:false)
+      history.uodate(juge_use:false)
       @cart=Cart.create(user_id:current_user.id)
       redirect_to products_buy_path, notice: "支払いが完了しました"
     end
 
     def create
-      @history=History.new(history_params)
-      @history.user_id = current_user.id
-      @history.pay_method=1 
-      @history.save
+      history=current_history
+      history.pay_method=1 
+      history.save
       Payjp.api_key = ENV['SECRET_KEY']
         Payjp::Charge.create(
           amount: sum, # 決済する値段
@@ -55,7 +55,7 @@ class User::HistoriesController < ApplicationController
         )
   
         current_cart.cart_items.each do |cart_item|
-          @history.history_items.create(product_id: cart_item.product_id,
+          history.history_items.create(product_id: cart_item.product_id,
                                         product_price: Product.find(cart_item.product_id).price,
                                         quantity: cart_item.quantity,
                                         user_id:current_user.id
@@ -64,6 +64,7 @@ class User::HistoriesController < ApplicationController
           @product.update(stock:@product.stock-cart_item.quantity)
         end
         current_cart.update(juge_use:false)
+        history.uodate(juge_use:false)
         @cart=Cart.create(user_id:current_user.id)
         redirect_to products_buy_path, notice: "支払いが完了しました"
     end
@@ -79,7 +80,7 @@ class User::HistoriesController < ApplicationController
 
     private
 
-    def  history_params
+    def history_params
       params.require(:history).permit(:shopping_prefecture, :shopping_city, :shopping_adress, :shopping_postal_code)
     end
 

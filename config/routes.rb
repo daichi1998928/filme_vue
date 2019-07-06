@@ -17,6 +17,9 @@ root to: 'root#top'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :user do
+    patch 'histories/add_address',to:'histories#add_address',as:'add_address'
+    post 'histories/cash_deliver',to: 'histories#cash_deliver',as: 'cash_deliver'
+    
     resources :histories, :only => [:create,:index,:new]
     resources :cart_items, :only => [:show,:destroy,:update]
     resources :products, :only => [:index,:show] do

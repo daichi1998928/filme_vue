@@ -1,7 +1,7 @@
 <div class="row">
    <h2 class="text-center profil-title">購入情報</h2>
    <div class="col-lg-8 col-lg-offset-2">
-    <%= form_for [:user,@history] do |f| %>
+    <%= form_for [@history,url: user_add_address_path] do |f| %>
       <h4>お届け住所</h4>
       <div class="field form-group">
        <%= f.text_field :shopping_prefecture,class:"form-control", :value => "#{current_user.prefecture}" %>
@@ -16,8 +16,10 @@
         <%= f.text_field :shopping_postal_code,class:"form-control", :value => "#{current_user.postal_code}" %>
       </div>
 
-      <h4 class="card-info">決済方法</h4>
+      <%= f.submit "住所追加",class:"btn btn-primary" %>
+    <% end %>
 
+    <h4 class="card-info">決済方法</h4>
     <%= form_for [:user,@history] do |f| %>
       <script
         type="text/javascript"
@@ -28,7 +30,9 @@
         data-text="クレジットで支払う"
         data-submit-text="支払う"
         ></script>
-      <% end %>
+     <% end %>
+
+     <%= link_to "代引き",cash_deliver_path,method: :post, class:"btn btn-primary" %>
    </div>
    
 </div>
