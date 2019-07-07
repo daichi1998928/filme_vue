@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_08_104951) do
+ActiveRecord::Schema.define(version: 2019_07_06_112430) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -49,12 +49,14 @@ ActiveRecord::Schema.define(version: 2019_06_08_104951) do
 
   create_table "histories", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "shopping_postal_code", null: false
-    t.string "shopping_prefecture", null: false
-    t.string "shopping_city", null: false
-    t.string "shopping_adress", null: false
+    t.string "postal_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "adress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "pay_method"
+    t.boolean "juge_use", default: true
   end
 
   create_table "history_items", force: :cascade do |t|

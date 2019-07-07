@@ -7,7 +7,7 @@
        <h2 class="text-center profil-title">購入履歴</h2>
 
         <% @history_items.each do |history_item| %>
-            <% @product=Product.find(history_item.id) %>
+            <% @product=Product.find(history_item.product_id) %>
             <% @history_item_img="status#{history_item.product_status}.png" %>	 
             <div class="row">
                    <div class="col-lg-3 ">
@@ -15,7 +15,7 @@
                    </div>
                    <div class="col-lg-3 col-offset-1">
                      <div class="title"><%= @product.product_title %></div>
-                     <div class="price">¥ <%= @product.price %></div>
+                     <div class="price">¥ <%= (@product.price*1.08).round %></div>
                    </div>
                    <div class="col-lg-3">
                      <%= image_tag @history_item_img, :size => '350x150' %>

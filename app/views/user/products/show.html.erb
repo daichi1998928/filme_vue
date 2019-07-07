@@ -29,7 +29,7 @@
              <div>/ <%= @product.label_name %></div>
             </div>
         
-            <div class="price">¥ <%= @product.price %></div>
+            <div class="price">¥ <%= (@product.price*1.08).round %></div>
            
             <div class="btn-box">
               <% unless current_user.nil? %>

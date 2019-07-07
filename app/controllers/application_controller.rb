@@ -37,5 +37,4 @@ class ApplicationController < ActionController::Base
       @cart = Cart.find_by(juge_use: true,user_id: current_user)
     end
   end
-
 end
