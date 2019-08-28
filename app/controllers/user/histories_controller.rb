@@ -2,16 +2,10 @@ class User::HistoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :can_buy, only: [:new]
   before_action :address_entry?,only: [:create,:cash_deliver]
-  
+
   include User::HistoriesHelper
-    
-    def address_entry?
-      if History.find_by(juge_use: true,user_id: current_user).nil?
-        redirect_to new_user_history_path,notice: "住所を確定してください"
-      end
-    end
-  
-    def index 
+
+    def index
       @history_items=HistoryItem.where(user_id:current_user.id).order(:created_at).page(params[:page]).per(8)
     end
 
@@ -54,7 +48,7 @@ class User::HistoriesController < ApplicationController
 
     def create
       history=History.find_by(juge_use: true, user_id:current_user)
-      history.pay_method=1 
+      history.pay_method=1
       history.save
       Payjp.api_key = ENV['SECRET_KEY']
         Payjp::Charge.create(
@@ -62,7 +56,7 @@ class User::HistoriesController < ApplicationController
           card: params['payjp-token'],
           currency: 'jpy'
         )
-  
+
         current_cart.cart_items.each do |cart_item|
           history.history_items.create(product_id: cart_item.product_id,
                                         product_price: Product.find(cart_item.product_id).price,
@@ -78,6 +72,14 @@ class User::HistoriesController < ApplicationController
         redirect_to products_buy_path, notice: "支払いが完了しました"
     end
 
+    private
+
+    def address_entry?
+      if History.find_by(juge_use: true,user_id: current_user).nil?
+        redirect_to new_user_history_path,notice: "住所を確定してください"
+      end
+    end
+
     def can_buy
       current_cart.cart_items.each do |cart_item|
         @product=Product.find(cart_item.product_id)
@@ -86,8 +88,6 @@ class User::HistoriesController < ApplicationController
         end
       end
     end
-
-    private
 
     def history_params
       params.require(:history).permit(:prefecture, :city, :adress, :postal_code)
