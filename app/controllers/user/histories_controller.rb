@@ -30,11 +30,7 @@ class User::HistoriesController < ApplicationController
       @histroy.update(pay_method: 2)
 
       current_cart.cart_items.each do |cart_item|
-        @history.history_items.create(product_id: cart_item.product_id,
-                                      product_price: Product.find(cart_item.product_id).price,
-                                      quantity: cart_item.quantity,
-                                      user_id:current_user.id
-                                      )
+        cart_item.create_history_item!(user_id: current_user.id, history: @history)
         @product=Product.find(cart_item.product_id)
         @product.update(stock:@product.stock-cart_item.quantity)
       end
@@ -54,11 +50,7 @@ class User::HistoriesController < ApplicationController
       )
 
       current_cart.cart_items.each do |cart_item|
-        @history.history_items.create(product_id: cart_item.product_id,
-                                     product_price: Product.find(cart_item.product_id).price,
-                                     quantity: cart_item.quantity,
-                                     user_id:current_user.id
-                                    )
+        cart_item.create_history_item!(user_id: current_user.id, history: @history)
         @product=Product.find(cart_item.product_id)
         @product.update(stock:@product.stock-cart_item.quantity)
       end
