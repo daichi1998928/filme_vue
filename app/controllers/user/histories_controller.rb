@@ -50,25 +50,25 @@ class User::HistoriesController < ApplicationController
       history=History.find_by(juge_use: true, user_id:current_user)
       history.pay_method=1
       history.save
-        Payjp::Charge.create(
-          amount: sum, # 決済する値段
-          card: params['payjp-token'],
-          currency: 'jpy'
-        )
+      Payjp::Charge.create(
+        amount: sum, # 決済する値段
+        card: params['payjp-token'],
+        currency: 'jpy'
+      )
 
-        current_cart.cart_items.each do |cart_item|
-          history.history_items.create(product_id: cart_item.product_id,
-                                        product_price: Product.find(cart_item.product_id).price,
-                                        quantity: cart_item.quantity,
-                                        user_id:current_user.id
-                                        )
-          @product=Product.find(cart_item.product_id)
-          @product.update(stock:@product.stock-cart_item.quantity)
-        end
-        current_cart.update(juge_use:false)
-        history.update(juge_use:false)
-        @cart=Cart.create(user_id:current_user.id)
-        redirect_to products_buy_path, notice: "支払いが完了しました"
+      current_cart.cart_items.each do |cart_item|
+        history.history_items.create(product_id: cart_item.product_id,
+                                     product_price: Product.find(cart_item.product_id).price,
+                                     quantity: cart_item.quantity,
+                                     user_id:current_user.id
+                                    )
+        @product=Product.find(cart_item.product_id)
+        @product.update(stock:@product.stock-cart_item.quantity)
+      end
+      current_cart.update(juge_use:false)
+      history.update(juge_use:false)
+      @cart=Cart.create(user_id:current_user.id)
+      redirect_to products_buy_path, notice: "支払いが完了しました"
     end
 
     private
