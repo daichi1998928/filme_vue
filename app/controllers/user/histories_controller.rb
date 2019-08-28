@@ -41,16 +41,19 @@ class User::HistoriesController < ApplicationController
 
     def create
       @histroy.update(pay_method: 1)
-      Payjp::Charge.create(
-        amount: sum, # 決済する値段
-        card: params['payjp-token'],
-        currency: 'jpy'
-      )
 
-      current_cart.cart_items.each do |cart_item|
-        cart_item.create_history_item!(user_id: current_user.id, history: @history)
-        @product=Product.find(cart_item.product_id)
-        @product.update(stock:@product.stock-cart_item.quantity)
+      transaction do
+        Payjp::Charge.create(
+          amount: sum, # 決済する値段
+          card: params['payjp-token'],
+          currency: 'jpy'
+        )
+
+        current_cart.cart_items.each do |cart_item|
+          cart_item.create_history_item!(user_id: current_user.id, history: @history)
+          @product=Product.find(cart_item.product_id)
+          @product.update(stock:@product.stock-cart_item.quantity)
+        end
       end
 
       update_cart_and_history
