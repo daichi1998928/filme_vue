@@ -27,8 +27,7 @@ class User::HistoriesController < ApplicationController
     end
 
     def cash_deliver
-      @history.pay_method=2
-      @history.save
+      @histroy.update(pay_method: 2)
 
       current_cart.cart_items.each do |cart_item|
         @history.history_items.create(product_id: cart_item.product_id,
@@ -47,8 +46,7 @@ class User::HistoriesController < ApplicationController
     end
 
     def create
-      @history.pay_method=1
-      @history.save
+      @histroy.update(pay_method: 1)
       Payjp::Charge.create(
         amount: sum, # 決済する値段
         card: params['payjp-token'],
