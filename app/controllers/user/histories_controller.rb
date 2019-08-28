@@ -50,7 +50,6 @@ class User::HistoriesController < ApplicationController
       history=History.find_by(juge_use: true, user_id:current_user)
       history.pay_method=1
       history.save
-      Payjp.api_key = ENV['SECRET_KEY']
         Payjp::Charge.create(
           amount: sum, # 決済する値段
           card: params['payjp-token'],
