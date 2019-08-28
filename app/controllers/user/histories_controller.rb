@@ -35,9 +35,7 @@ class User::HistoriesController < ApplicationController
         @product.update(stock:@product.stock-cart_item.quantity)
       end
 
-      current_cart.update(juge_use:false)
-      @history.update(juge_use:false)
-      @cart=Cart.create(user_id:current_user.id)
+      update_cart_and_history
       redirect_to products_buy_path, notice: "支払いが完了しました"
     end
 
@@ -54,13 +52,18 @@ class User::HistoriesController < ApplicationController
         @product=Product.find(cart_item.product_id)
         @product.update(stock:@product.stock-cart_item.quantity)
       end
-      current_cart.update(juge_use:false)
-      @history.update(juge_use:false)
-      @cart=Cart.create(user_id:current_user.id)
+
+      update_cart_and_history
       redirect_to products_buy_path, notice: "支払いが完了しました"
     end
 
     private
+
+    def update_cart_and_history
+      current_cart.update(juge_use:false)
+      @history.update(juge_use:false)
+      @cart=Cart.create(user_id:current_user.id)
+    end
 
     def set_history
       @history = History.find_by(juge_use: true, user_id: current_user.id)
