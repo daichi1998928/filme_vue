@@ -34,6 +34,7 @@ class User::HistoriesController < ApplicationController
         @product.update(stock:@product.stock-cart_item.quantity)
       end
 
+      binding.pry
       update_cart_and_history
       redirect_to products_buy_path, notice: "支払いが完了しました"
     end
