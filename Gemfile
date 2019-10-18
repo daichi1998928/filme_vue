@@ -75,4 +75,4 @@ gem 'payjp'
 gem 'pry-byebug'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'paranoia', '~> 2.3', '>= 2.3.1'
-
+gem 'webpacker', '~> 4.x'
