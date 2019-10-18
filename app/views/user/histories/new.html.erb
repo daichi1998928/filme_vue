@@ -42,5 +42,11 @@
      <% end %>
 
      <%= link_to "代引き", user_cash_deliver_path,method: :post, class:"btn btn-primary" %>
+     <%= form_tag(action: :cash_deliver, method: :post) do %>
+      <% hidden_field_tag :pay_method, 2 %>
+       <%= submit_tag "代引き" %>
+          
+
+     <% end %>
    </div>
 </div>

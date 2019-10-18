@@ -27,8 +27,7 @@ class User::HistoriesController < ApplicationController
     end
 
     def cash_deliver
-      @histroy.update(pay_method: 2)
-
+      @history.update(pay_method:2)
       current_cart.cart_items.each do |cart_item|
         cart_item.create_history_item!(user_id: current_user.id, history: @history)
         @product=Product.find(cart_item.product_id)
@@ -40,6 +39,7 @@ class User::HistoriesController < ApplicationController
     end
 
     def create
+
       @histroy.update(pay_method: 1)
 
       transaction do
@@ -70,6 +70,8 @@ class User::HistoriesController < ApplicationController
 
     def set_history
       @history = History.find_by(juge_use: true, user_id: current_user.id)
+      @history.pay_method = 1
+      @history.save
     end
 
     def address_entry?
