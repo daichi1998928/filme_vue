@@ -42,6 +42,14 @@
                 <% if @product.favorited_by?(current_user) %>
                   <%= link_to "お気に入りを外す", user_product_favorites_path(@product.id), method: :delete, class:"btn btn-warning" %> 
                 <% else %>
+                <div > 
+                   <form id="favorite">
+                    {{product_id}}
+                    <input type="hidden" v-model='product_id' value="<%= @product.id%>">
+                    <button class="btn-primary" @click="favorite">ボタン</button>
+                  </form>
+                </div>
+                
                   <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
                 <% end %>
               <% end %>
@@ -87,3 +95,5 @@
       </div>
     <% end %>
 </div>
+
+<%= javascript_pack_tag 'favorite' %>
