@@ -8,7 +8,6 @@ class User::FavoritesController < ApplicationController
  def create
     product=Product.find(params[:product_id])
     favorite = current_user.favorites.new(product_id: product.id) 
-    binding.pry
     if favorite.save
       render :json => ""
     end
@@ -18,8 +17,10 @@ class User::FavoritesController < ApplicationController
  def destroy
     product=Product.find(params[:product_id])
     favorite = current_user.favorites.find_by(product_id: product.id)
-    favorite.destroy
-    redirect_to user_product_path(product.id)
+    if favorite.destroy
+      render :json => ""
+    end
+    
  end
 
 end

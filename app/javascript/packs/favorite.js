@@ -11,9 +11,16 @@ new Vue({
         product_id: document.querySelector("[v-model='product_id']").value
     },
     methods:{
-        favorite: function(){
+        favorite_create: function(){
            
-            axios.post(`/user/products/` + this.product_id + `/favorites/`) 
+            axios.post(`/user/products/${this.product_id}/favorites/`) 
+            .then(res =>{
+                window.location.href = `/user/products/${this.product_id}`;
+            })
+        },
+        favorite_delete: function(){
+            console.log("aaaaaa");
+            axios.delete(`/user/products/${this.product_id}/favorites/`)
             .then(res =>{
                 window.location.href = `/user/products/${this.product_id}`;
             })

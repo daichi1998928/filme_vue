@@ -38,21 +38,22 @@
                 <% else %>
                   <%= link_to "カートに入れる",user_product_cart_items_path(@product.id),method: :post,class:"btn btn-default" %>
                 <% end %> 
-
-                <% if @product.favorited_by?(current_user) %>
-                  <%= link_to "お気に入りを外す", user_product_favorites_path(@product.id), method: :delete, class:"btn btn-warning" %> 
-                <% else %>
-                <div > 
-                   <form id="favorite">
-                    {{product_id}}
+              <div id="favorite">
+                 <% if @product.favorited_by?(current_user) %>
+                   <form>
                     <input type="hidden" v-model='product_id' value="<%= @product.id%>">
-                    <button class="btn-primary" @click="favorite">ボタン</button>
+                    <button class="btn btn-warning" v-on:click="favorite_delete">お気に入りを削除</button>
+                  </form>
+                <% else %>
+                   <form>
+                    <input type="hidden" v-model='product_id' value="<%= @product.id%>">
+                    <button class="btn btn-default" v-on:click="favorite_create">お気に入りに追加</button>
                   </form>
                 </div>
-                
-                  <%= link_to "お気に入り", user_product_favorites_path(@product.id), method: :post, class:"btn btn-default"%>
+                 <% end %>
                 <% end %>
-              <% end %>
+              </div>
+               
             </div>    
 
         </div>
